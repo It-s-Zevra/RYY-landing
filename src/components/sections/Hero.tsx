@@ -27,7 +27,7 @@ export function Hero() {
       ref={ref}
       id="inicio"
       data-section-theme="dark"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-cape text-porcelain"
+      className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-cape text-porcelain md:items-center"
     >
       {/* Background image with parallax */}
       <motion.div
@@ -63,22 +63,23 @@ export function Hero() {
       {/* Content */}
       <motion.div
         style={{ opacity: fade }}
-        className="container-page relative z-10 pb-36 pt-24 md:pb-40 md:pt-20"
+        className="container-page relative z-10 pb-32 pt-28 md:pb-40 md:pt-20"
       >
         {/* Eyebrow */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
-          className="eyebrow mb-5 flex items-center gap-3 text-mint md:mb-6"
+          className="eyebrow mb-5 flex items-center gap-3 whitespace-nowrap text-mint md:mb-6"
         >
           <motion.span
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, ease: EASE, delay: 0.7 }}
-            className="h-px w-10 origin-left bg-mint"
+            className="h-px w-6 origin-left bg-mint md:w-10"
           />
-          Estudio jurídico · Santiago de Chile
+          <span className="hidden sm:inline">Estudio jurídico · Santiago de Chile</span>
+          <span className="sm:hidden">Estudio jurídico · Chile</span>
         </motion.p>
 
         {/* Headline */}
@@ -90,7 +91,7 @@ export function Hero() {
             <RotatingWord
               words={ROTATING_WORDS}
               widest="estratégico."
-              delay={0.45}
+              delay={0.2}
             />
           </span>
           <span className="mt-2 block text-porcelain/55">

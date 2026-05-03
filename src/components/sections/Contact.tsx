@@ -126,7 +126,7 @@ function TabButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "relative inline-flex flex-1 items-center justify-center gap-2 rounded-pill px-5 py-2.5 font-mono text-eyebrow uppercase tracking-widest transition-colors md:flex-none",
+        "relative inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-pill px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors md:flex-none md:px-5 md:py-2.5 md:tracking-widest",
         active ? "text-cape" : "text-mint/70 hover:text-mint",
       )}
     >
@@ -137,8 +137,8 @@ function TabButton({
           transition={{ type: "spring", stiffness: 380, damping: 32 }}
         />
       )}
-      <span className="relative z-10 flex items-center gap-2">
-        {icon}
+      <span className="relative z-10 flex items-center gap-1.5 md:gap-2">
+        <span className="hidden md:inline-flex">{icon}</span>
         {label}
       </span>
     </button>
