@@ -156,7 +156,7 @@ export function Navbar() {
         >
           <nav
             className={cn(
-              "grid grid-cols-[1fr_auto_1fr] items-center gap-4 transition-all duration-500",
+              "flex items-center justify-between gap-4 transition-all duration-500 lg:grid lg:grid-cols-[1fr_auto_1fr]",
               scrolled
                 ? "rounded-pill border px-3 py-2 backdrop-blur-xl shadow-[0_8px_32px_rgba(6,24,42,0.18)] md:px-4 md:py-2.5"
                 : "border-b-0 bg-transparent px-0 py-5",

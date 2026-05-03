@@ -14,7 +14,7 @@ export function Footer() {
         aria-hidden
         className="container-page select-none border-b border-obsidian/30 pb-4 pt-16 md:pt-24"
       >
-        <p className="font-serif text-[clamp(2.6rem,11vw,9rem)] font-medium leading-[0.95] tracking-tight text-balance text-porcelain/85">
+        <p className="font-serif text-[clamp(1.9rem,7vw,5.5rem)] font-medium leading-[0.98] tracking-tight text-balance text-porcelain/85">
           Derecho laboral.{" "}
           <span className="italic text-mint/40">
             Sin solemnidad innecesaria.

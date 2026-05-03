@@ -198,27 +198,37 @@ function ServiceRow({
             transition={{ duration: 0.45, ease: EASE }}
             className="relative z-10 overflow-hidden bg-cape text-porcelain"
           >
-            <div className="grid gap-6 px-2 pb-7 pt-1 md:grid-cols-[1fr_auto] md:items-end md:gap-12 md:px-4 md:pb-9">
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+            <div className="px-2 pb-8 md:px-4 md:pb-10">
+              <motion.span
+                aria-hidden
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: EASE, delay: 0.05 }}
-                className="max-w-2xl text-pretty text-base text-mint/85 md:text-lg"
-              >
-                {desc}
-              </motion.p>
-              <motion.a
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: EASE, delay: 0.1 }}
-                href="#contacto"
-                className="group/cta inline-flex items-center gap-1.5 self-start rounded-pill bg-mint px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-cape transition-colors hover:bg-mint-dark md:self-auto"
-              >
-                Conversemos
-                <ArrowUpRight className="h-3 w-3 transition-transform duration-300 ease-out group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
-              </motion.a>
+                transition={{ duration: 0.5, ease: EASE, delay: 0.05 }}
+                className="mb-6 block h-px origin-left bg-mint/15 md:mb-8"
+              />
+              <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end md:gap-12">
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, ease: EASE, delay: 0.1 }}
+                  className="max-w-2xl text-pretty text-[15px] leading-relaxed text-porcelain/75 md:text-base"
+                >
+                  {desc}
+                </motion.p>
+                <motion.a
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, ease: EASE, delay: 0.15 }}
+                  href="#contacto"
+                  className="group/cta inline-flex items-center gap-1.5 self-start rounded-pill bg-mint px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-cape transition-colors hover:bg-mint-dark md:self-auto"
+                >
+                  Conversemos
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 ease-out group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         )}

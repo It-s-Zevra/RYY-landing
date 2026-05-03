@@ -27,7 +27,7 @@ export function Hero() {
       ref={ref}
       id="inicio"
       data-section-theme="dark"
-      className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-cape text-porcelain md:items-center"
+      className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-cape text-porcelain"
     >
       {/* Background image with parallax */}
       <motion.div
@@ -63,7 +63,7 @@ export function Hero() {
       {/* Content */}
       <motion.div
         style={{ opacity: fade }}
-        className="container-page relative z-10 pb-32 pt-28 md:pb-40 md:pt-20"
+        className="container-page relative z-10 pb-28 pt-20 md:pb-40 md:pt-20"
       >
         {/* Eyebrow */}
         <motion.p
@@ -83,7 +83,7 @@ export function Hero() {
         </motion.p>
 
         {/* Headline */}
-        <h1 className="max-w-[14ch] font-serif text-display-2xl font-medium leading-[0.96] text-balance text-porcelain">
+        <h1 className="max-w-[14ch] font-serif text-[clamp(2.4rem,5.6vw,4.8rem)] font-medium leading-[0.98] tracking-tight text-balance text-porcelain">
           <span className="block">
             <MaskReveal delay={0.15} eager>Tu aliado</MaskReveal>
           </span>
