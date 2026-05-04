@@ -12,6 +12,8 @@ import {
   Mail,
   Clock,
   X,
+  ShieldCheck,
+  MessageCircle,
 } from "lucide-react";
 import { contactSchema, type ContactInput } from "@/lib/schemas";
 import { site } from "@/lib/site";
@@ -22,6 +24,57 @@ const MAILER_ENDPOINT =
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 
+const RATE_LIMIT_KEY = "ryy_form_submissions";
+const RATE_LIMIT_MAX = 2;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 60 minutes
+
+function readSubmissions(): number[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(RATE_LIMIT_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((t): t is number => typeof t === "number");
+  } catch {
+    return [];
+  }
+}
+
+function writeSubmissions(list: number[]): void {
+  if (typeof window === "undefined") return;
+  try {
+    if (list.length === 0) {
+      window.localStorage.removeItem(RATE_LIMIT_KEY);
+    } else {
+      window.localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(list));
+    }
+  } catch {}
+}
+
+function lockUntilFromList(list: number[]): number | null {
+  if (list.length < RATE_LIMIT_MAX) return null;
+  return Math.min(...list) + RATE_LIMIT_WINDOW_MS;
+}
+
+function pruneAndGetLock(): number | null {
+  const now = Date.now();
+  const stored = readSubmissions();
+  const fresh = stored.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  if (fresh.length !== stored.length) writeSubmissions(fresh);
+  return lockUntilFromList(fresh);
+}
+
+function recordSubmission(): number | null {
+  const now = Date.now();
+  const fresh = readSubmissions().filter(
+    (t) => now - t < RATE_LIMIT_WINDOW_MS,
+  );
+  fresh.push(now);
+  writeSubmissions(fresh);
+  return lockUntilFromList(fresh);
+}
+
 type SubmitState =
   | { kind: "idle" }
   | { kind: "error"; message: string }
@@ -29,6 +82,8 @@ type SubmitState =
 
 export function ContactForm() {
   const [state, setState] = useState<SubmitState>({ kind: "idle" });
+  const [lockUntil, setLockUntil] = useState<number | null>(null);
+  const [now, setNow] = useState<number>(() => Date.now());
 
   const {
     register,
@@ -39,6 +94,26 @@ export function ContactForm() {
     resolver: zodResolver(contactSchema),
     mode: "onTouched",
   });
+
+  // Hydrate lock state from localStorage on mount
+  useEffect(() => {
+    setLockUntil(pruneAndGetLock());
+  }, []);
+
+  // Tick countdown every second while locked, auto-unlock when expired
+  useEffect(() => {
+    if (!lockUntil) return;
+    const id = window.setInterval(() => {
+      const current = Date.now();
+      if (current >= lockUntil) {
+        writeSubmissions([]);
+        setLockUntil(null);
+      } else {
+        setNow(current);
+      }
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [lockUntil]);
 
   async function onSubmit(data: ContactInput) {
     setState({ kind: "idle" });
@@ -54,6 +129,8 @@ export function ContactForm() {
 
       if (res.ok) {
         const firstName = data.fullName.trim().split(/\s+/)[0] ?? "";
+        const newLock = recordSubmission();
+        setLockUntil(newLock);
         setState({ kind: "success", email: data.email, firstName });
         reset();
         return;
@@ -86,8 +163,13 @@ export function ContactForm() {
     }
   }
 
+  const isLocked = lockUntil !== null && now < lockUntil;
+
   return (
     <div className="relative">
+      {isLocked && lockUntil ? (
+        <LockedState lockUntil={lockUntil} now={now} />
+      ) : (
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate
@@ -273,6 +355,7 @@ export function ContactForm() {
           )}
         </button>
       </form>
+      )}
 
       <AnimatePresence>
         {state.kind === "success" && (
@@ -407,6 +490,97 @@ function SuccessPopup({
           </p>
         </div>
       </motion.div>
+    </motion.div>
+  );
+}
+
+function LockedState({
+  lockUntil,
+  now,
+}: {
+  lockUntil: number;
+  now: number;
+}) {
+  const remainingMs = Math.max(0, lockUntil - now);
+  const totalSeconds = Math.ceil(remainingMs / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  const reactivatesAt = new Date(lockUntil).toLocaleTimeString("es-CL", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASE }}
+      className="relative overflow-hidden rounded-lg border border-mint/20 bg-cape-700/40 p-7 md:p-9"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(218,246,239,0.08),transparent_70%)]"
+      />
+
+      <div className="relative z-10">
+        <div className="flex h-12 w-12 items-center justify-center rounded-pill border border-mint/30 bg-mint/10 text-mint">
+          <ShieldCheck className="h-5 w-5" />
+        </div>
+
+        <p className="eyebrow mt-6 text-mint">Formulario en pausa</p>
+        <h3 className="mt-3 font-serif text-2xl font-medium leading-tight text-porcelain md:text-[28px]">
+          Tu consulta ya está en nuestras manos.{" "}
+          <span className="italic text-mint">No envíes duplicados.</span>
+        </h3>
+        <p className="mt-3 max-w-md text-sm text-porcelain/65">
+          Para mantener todo limpio, el formulario se pausa por una hora luego
+          de {RATE_LIMIT_MAX} envíos. Te respondemos directo a tu correo en
+          menos de 24 h hábiles.
+        </p>
+
+        <div className="mt-7 flex items-center gap-5 rounded-md border border-mint/15 bg-cape-900/60 px-5 py-4">
+          <Clock className="h-5 w-5 flex-none text-mint" />
+          <div className="min-w-0">
+            <p className="font-mono text-eyebrow uppercase tracking-widest text-mint/60">
+              Se reactiva en
+            </p>
+            <p className="mt-1.5 font-mono text-3xl font-semibold tabular-nums text-porcelain md:text-4xl">
+              {String(minutes).padStart(2, "0")}
+              <span className="text-mint/50">:</span>
+              {String(seconds).padStart(2, "0")}
+            </p>
+          </div>
+          <span aria-hidden className="ml-auto hidden h-10 w-px bg-mint/15 md:block" />
+          <p className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-porcelain/40 md:block">
+            Aprox.
+            <br />
+            {reactivatesAt} hrs
+          </p>
+        </div>
+
+        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={site.contact.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex flex-1 items-center justify-center gap-2 rounded-pill bg-mint px-6 py-3.5 font-mono text-eyebrow uppercase tracking-widest text-cape transition-colors hover:bg-mint-dark"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Hablemos por WhatsApp
+          </a>
+          <a
+            href={`mailto:${site.contact.email}`}
+            className="inline-flex items-center justify-center gap-2 rounded-pill border border-mint/30 px-6 py-3.5 font-mono text-eyebrow uppercase tracking-widest text-mint transition-colors hover:bg-mint hover:text-cape"
+          >
+            <Mail className="h-4 w-4" />
+            Escríbenos un correo
+          </a>
+        </div>
+
+        <p className="mt-5 text-xs text-porcelain/40">
+          Si nuestro correo no llegó, revisa tu carpeta de spam o promociones.
+        </p>
+      </div>
     </motion.div>
   );
 }
