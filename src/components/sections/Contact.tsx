@@ -1,18 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
 import { Calendar, MessageSquare, Mail, Phone, MapPin, Linkedin } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/lib/site";
-import { cn } from "@/lib/utils";
-
-type Tab = "form" | "calendar";
 
 export function Contact() {
-  const [tab, setTab] = useState<Tab>("form");
-
   return (
     <section
       id="contacto"
@@ -76,72 +69,38 @@ export function Contact() {
           </Reveal>
         </div>
 
-        {/* Right column — tabs + form / calendar */}
+        {/* Right column — form + calendar (disabled) */}
         <div className="md:col-span-7">
           <Reveal delay={0.05}>
-            <div className="flex gap-2 rounded-pill border border-mint/15 bg-cape-900/60 p-1.5 backdrop-blur w-full md:w-fit">
-              <TabButton
-                active={tab === "form"}
-                onClick={() => setTab("form")}
-                icon={<MessageSquare className="h-3.5 w-3.5" />}
-                label="Escríbenos"
-              />
-              <TabButton
-                active={tab === "calendar"}
-                onClick={() => setTab("calendar")}
-                icon={<Calendar className="h-3.5 w-3.5" />}
-                label="Agenda directa"
-              />
+            <div className="flex w-full gap-2 rounded-pill border border-mint/15 bg-cape-900/60 p-1.5 backdrop-blur md:w-fit">
+              <span
+                className="relative inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-pill bg-mint px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-cape md:flex-none md:px-5 md:py-2.5 md:tracking-widest"
+              >
+                <MessageSquare className="hidden h-3.5 w-3.5 md:inline-flex" />
+                Escríbenos
+              </span>
+              <span
+                aria-disabled="true"
+                title="Agenda directa · Próximamente"
+                className="relative inline-flex flex-1 cursor-not-allowed items-center justify-center gap-2 whitespace-nowrap rounded-pill px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-mint/40 md:flex-none md:px-5 md:py-2.5 md:tracking-widest"
+              >
+                <Calendar className="hidden h-3.5 w-3.5 md:inline-flex" />
+                Agenda directa
+                <span className="ml-1 rounded-pill border border-mint/25 px-1.5 py-0.5 font-mono text-[8px] tracking-[0.18em] text-mint/60 md:text-[9px]">
+                  Próximamente
+                </span>
+              </span>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
             <div className="mt-8 rounded-lg border border-mint/10 bg-cape-900/50 p-6 backdrop-blur md:p-8">
-              {tab === "form" ? (
-                <ContactForm />
-              ) : (
-                <CalendarPlaceholder />
-              )}
+              <ContactForm />
             </div>
           </Reveal>
         </div>
       </div>
     </section>
-  );
-}
-
-function TabButton({
-  active,
-  onClick,
-  icon,
-  label,
-}: {
-  active: boolean;
-  onClick: () => void;
-  icon: React.ReactNode;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={cn(
-        "relative inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-pill px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors md:flex-none md:px-5 md:py-2.5 md:tracking-widest",
-        active ? "text-cape" : "text-mint/70 hover:text-mint",
-      )}
-    >
-      {active && (
-        <motion.span
-          layoutId="contact-tab"
-          className="absolute inset-0 rounded-pill bg-mint"
-          transition={{ type: "spring", stiffness: 380, damping: 32 }}
-        />
-      )}
-      <span className="relative z-10 flex items-center gap-1.5 md:gap-2">
-        <span className="hidden md:inline-flex">{icon}</span>
-        {label}
-      </span>
-    </button>
   );
 }
 
@@ -190,34 +149,4 @@ function ContactItem({
   }
 
   return <li className="flex items-start gap-4">{content}</li>;
-}
-
-function CalendarPlaceholder() {
-  return (
-    <div className="flex flex-col items-start gap-5 py-8">
-      <span className="flex h-12 w-12 items-center justify-center rounded-pill border border-mint/30 text-mint">
-        <Calendar className="h-5 w-5" />
-      </span>
-      <div>
-        <p className="eyebrow text-mint">Agenda · 30 min sin costo</p>
-        <h3 className="mt-3 font-serif text-2xl font-medium text-porcelain">
-          Próximamente · Cal.com embebido aquí.
-        </h3>
-        <p className="mt-3 max-w-md text-sm text-porcelain/60">
-          Cuando me pases la URL pública de Cal.com (o Calendly) la conecto en
-          este bloque para que el cliente reserve directamente. Mientras tanto,
-          puedes usar el formulario de la otra pestaña o escribirnos por
-          WhatsApp.
-        </p>
-        <a
-          href={site.contact.whatsapp}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-pill bg-mint px-5 py-3 font-mono text-eyebrow uppercase tracking-widest text-cape transition-colors hover:bg-mint-dark"
-        >
-          Escríbenos por WhatsApp
-        </a>
-      </div>
-    </div>
-  );
 }
