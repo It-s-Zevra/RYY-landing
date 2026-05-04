@@ -117,12 +117,36 @@ export function Footer() {
       </div>
 
       <div className="border-t border-obsidian/30">
-        <div className="container-page flex flex-col items-start justify-between gap-3 py-6 text-xs text-porcelain/50 md:flex-row md:items-center">
+        <div className="container-page flex flex-col items-start justify-between gap-4 py-6 text-xs text-porcelain/50 md:flex-row md:items-center md:gap-6">
           <p>© 2026 {site.legalName}. Todos los derechos reservados.</p>
-          <p className="font-mono uppercase tracking-widest">
-            <span className="text-mint/60">Antes</span> Rivas Legal ·{" "}
-            <span className="text-mint/60">Ahora</span> RYY Abogados
-          </p>
+          <div className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-5">
+            <p className="font-mono uppercase tracking-widest">
+              <span className="text-mint/60">Antes</span> Rivas Legal ·{" "}
+              <span className="text-mint/60">Ahora</span> RYY Abogados
+            </p>
+            <span aria-hidden className="hidden h-3 w-px bg-mint/15 md:block" />
+            <a
+              href="https://zevraz.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-porcelain/40 transition-colors hover:text-mint"
+            >
+              <span>Hecho con</span>
+              <span className="flex items-center gap-1.5">
+                <Image
+                  src="https://res.cloudinary.com/dg1x0cwdc/image/upload/v1774782823/logosolo_vjar0o.png"
+                  alt=""
+                  width={28}
+                  height={28}
+                  sizes="14px"
+                  className="h-3.5 w-3.5 object-contain opacity-70 transition-opacity duration-300 group-hover:opacity-100 invert"
+                />
+                <span className="font-semibold tracking-[0.28em] text-porcelain/70 transition-colors group-hover:text-mint">
+                  Zevra
+                </span>
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
