@@ -11,7 +11,7 @@ export const site = {
     dark: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1777776230/icoB1_roek5w.png",
   },
   hero: {
-    bg: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1777776410/ChatGPT_Image_2_may_2026_22_41_54_1_t7tsaa.png",
+    bg: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1778593188/ChatGPT_Image_12_may_2026_09_38_07_jl6kwf.png",
   },
   contact: {
     phone: "+56 9 7766 0481",
@@ -29,12 +29,12 @@ export const site = {
     { label: "Contacto", href: "#contacto" },
   ],
   consultTypes: [
-    "Asesoría laboral permanente",
-    "Juicio laboral",
-    "Ley Karin / Investigación interna",
-    "Reglamento Interno",
-    "Compliance / Prevención del Delito",
-    "Protección de Datos",
+    "Asesoría Laboral",
+    "Litigios",
+    "Compliance Laboral",
+    "Migraciones",
+    "Negociación Colectiva",
+    "Capacitaciones",
     "Otro",
   ],
   companySizes: ["1-10", "11-50", "51-200", "200+"] as const,

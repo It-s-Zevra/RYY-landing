@@ -20,7 +20,7 @@ export function Contact() {
           <Reveal>
             <p className="eyebrow mb-4 flex items-center gap-3 text-mint">
               <span className="h-px w-8 bg-mint" />
-              06 / Hablemos
+              07 / Hablemos
             </p>
           </Reveal>
           <Reveal delay={0.05}>

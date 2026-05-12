@@ -123,25 +123,37 @@ export function Hero() {
           </span>
         </h1>
 
+        {/* Differentiator subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: EASE, delay: 1.2 }}
+          className="mt-7 max-w-xl text-pretty text-[15px] leading-relaxed text-porcelain/70 md:text-base"
+        >
+          Estudio jurídico especializado en{" "}
+          <span className="text-porcelain">derecho laboral para empresas</span>.
+          Estándares de excelencia, criterio y compromiso real en cada decisión.
+        </motion.p>
+
         {/* CTA cluster — compact & minimal */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, ease: EASE, delay: 1.35 }}
-          className="mt-9 flex flex-col gap-3 md:mt-10"
+          className="mt-7 flex flex-col gap-3 md:mt-8"
         >
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5">
-            {/* Primary — compact pill with subtle glow on hover */}
+            {/* Primary — prominent pill with shimmer */}
             <a
               href="#contacto"
-              className="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-pill bg-mint px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-cape shadow-[0_0_0_1px_rgba(218,246,239,0)] transition-all duration-300 ease-out-expo hover:shadow-[0_8px_28px_-8px_rgba(218,246,239,0.6),0_0_0_1px_rgba(218,246,239,0.1)]"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-pill bg-mint px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-cape shadow-[0_8px_28px_-8px_rgba(218,246,239,0.4)] transition-all duration-300 ease-out-expo hover:shadow-[0_12px_36px_-8px_rgba(218,246,239,0.7),0_0_0_1px_rgba(218,246,239,0.18)]"
             >
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out-expo group-hover:translate-x-full"
               />
-              <span className="relative">Hablemos</span>
-              <ArrowUpRight className="relative h-3 w-3 transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span className="relative">Reunámonos</span>
+              <ArrowUpRight className="relative h-4 w-4 transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
             <span aria-hidden className="hidden h-3 w-px bg-mint/15 sm:block" />
@@ -188,7 +200,7 @@ export function Hero() {
           </div>
           <div className="hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-porcelain/55 md:flex">
             <span className="h-px w-8 bg-mint/40" />
-            Asesoría · Litigios · Ley Karin · Compliance · Datos
+            Asesoría laboral · Litigios · Compliance · Migraciones · Negociación colectiva
           </div>
         </div>
       </motion.div>

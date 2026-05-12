@@ -51,12 +51,12 @@ export function Footer() {
           <div className="md:col-span-2">
             <p className="eyebrow text-mint/60">Servicios</p>
             <ul className="mt-4 space-y-2 text-sm text-porcelain/80">
-              <li>Asesoría permanente</li>
-              <li>Litigios laborales</li>
-              <li>Investigaciones Karin</li>
-              <li>Reglamento Interno</li>
-              <li>Compliance</li>
-              <li>Protección de datos</li>
+              <li>Asesoría Laboral</li>
+              <li>Litigios</li>
+              <li>Compliance Laboral</li>
+              <li>Migraciones</li>
+              <li>Negociación Colectiva</li>
+              <li>Capacitaciones</li>
             </ul>
           </div>
 

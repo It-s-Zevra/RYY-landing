@@ -35,7 +35,7 @@ export function Insights() {
             <Reveal>
               <p className="eyebrow mb-4 flex items-center gap-3 text-obsidian">
                 <span className="h-px w-8 bg-obsidian" />
-                05 / Insights y prensa
+                06 / Insights y prensa
               </p>
             </Reveal>
             <Reveal delay={0.05}>

@@ -35,7 +35,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-fraunces)", "Georgia", "serif"],
+        serif: ["var(--font-spectral)", "Georgia", "serif"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },

@@ -11,33 +11,33 @@ const EASE = [0.19, 1, 0.22, 1] as const;
 const services = [
   {
     n: "01",
-    title: "Asesoría laboral permanente",
-    desc: "Acompañamiento mensual a tu área de RRHH. Respondemos rápido y por escrito a consultas, redactamos contratos, finiquitos y anexos, y prevenimos contingencias antes de que escalen.",
+    title: "Asesoría Laboral",
+    desc: "Apoyamos a las organizaciones en todo el espectro laboral: desde relaciones laborales y seguridad social, despidos complejos, investigaciones internas, salud ocupacional y asuntos migratorios.",
   },
   {
     n: "02",
-    title: "Juicios y representación judicial",
-    desc: "Defensa de empresas y trabajadores en los tribunales del trabajo a lo largo del país. Estrategia clara, comunicación constante y honorarios pactados desde el inicio — sin sorpresas.",
+    title: "Litigios",
+    desc: "Representación de empresas y ejecutivos de alto nivel en los tribunales del trabajo a lo largo del país. Estrategia clara, comunicación constante y honorarios pactados desde el inicio para evitar sorpresas. Los acompañamos en cada etapa del proceso con asesoría especializada y discreta.",
   },
   {
     n: "03",
-    title: "Investigaciones Ley Karin",
-    desc: "Investigaciones internas con investigador externo objetivo, conforme al estándar legal. Entregamos informe formal con conclusiones y recomendaciones aplicables al reglamento interno.",
+    title: "Compliance Laboral",
+    desc: "El compliance laboral es el conjunto de políticas, protocolos y prácticas que permiten a una empresa operar dentro del marco legal vigente en materia laboral. Contar con esta documentación ordenada y actualizada no es solo una buena práctica: es lo que permite defenderse con solidez ante tribunales y fiscalizaciones, demostrando que la organización actuó con diligencia y cumplió su deber de cuidado. Esto incluye instrumentos como el Reglamento Interno de Orden, Higiene y Seguridad, el Protocolo de la Ley Karin, el Modelo de Prevención de Delitos y el Modelo de Protección de Datos Personales, entre otros.",
   },
   {
     n: "04",
-    title: "Reglamento Interno de Orden e Higiene",
-    desc: "Diseño y actualización del RIOHS adaptado a la realidad de tu operación. Incluye protocolos de acoso, teletrabajo y todas las exigencias vigentes de la Dirección del Trabajo.",
+    title: "Migraciones",
+    desc: "Acompañamos a empresas y colaboradores en su gestión migratoria y en desplazamientos temporales en Chile, incluyendo la tramitación de visas, residencias y permisos de trabajo, así como la elección del régimen previsional más conveniente.",
   },
   {
     n: "05",
-    title: "Modelo de Prevención del Delito",
-    desc: "Implementación de modelos bajo Ley 20.393, con su correspondiente certificación. Capacitamos al directorio y a los responsables, y dejamos el modelo listo para auditorías.",
+    title: "Negociación Colectiva",
+    desc: "Acompañamos a las empresas en todas las etapas de su relación con las organizaciones sindicales, entregando apoyo jurídico y estratégico integral. Nuestros servicios comprenden la orientación experta en procesos de negociación colectiva, tanto reglada como no reglada; la representación y asistencia en mediaciones y comparendos ante organismos administrativos; el acompañamiento completo en los procesos de calificación de servicios mínimos; la redacción y revisión de los instrumentos y documentos propios de la vinculación empresa-sindicato.",
   },
   {
     n: "06",
-    title: "Modelo de Protección de Datos",
-    desc: "Cumplimiento con la nueva Ley de Datos Personales y políticas internas. Mapeo de tratamientos, contratos con proveedores, política de privacidad y entrenamiento al equipo.",
+    title: "Capacitaciones",
+    desc: "Capacitamos a tu equipo para enfrentar con confianza los desafíos del mundo laboral y empresarial, incluyendo materias como Responsabilidad Legal, Compliance, Derechos Fundamentales y Ley Karin.",
   },
 ];
 
@@ -54,7 +54,7 @@ export function Services() {
         <Reveal>
           <p className="eyebrow mb-4 flex items-center gap-3 text-obsidian">
             <span className="h-px w-8 bg-obsidian" />
-            02 / Servicios
+            03 / Servicios
           </p>
         </Reveal>
         <Reveal delay={0.05}>
@@ -62,14 +62,7 @@ export function Services() {
             Lo que resolvemos para ti.
           </h2>
         </Reveal>
-        <Reveal delay={0.1}>
-          <p className="mt-5 max-w-2xl text-pretty text-obsidian/80">
-            Asesoría laboral integral para empresas que no pueden permitirse un
-            error legal. Una sola firma, todo el ciclo.
-          </p>
-        </Reveal>
-
-        <StaggerGroup className="mt-16 border-y border-obsidian/15">
+        <StaggerGroup className="mt-12 border-y border-obsidian/15 md:mt-16">
           {services.map((s) => (
             <ServiceRow
               key={s.n}
@@ -87,14 +80,13 @@ export function Services() {
               <div>
                 <p className="eyebrow text-mint">→ Plan empresarial</p>
                 <p className="mt-4 font-serif text-display-md font-medium leading-tight text-balance">
-                  Plan de 12 meses ·{" "}
-                  <span className="italic text-mint">
-                    Reglamento Interno gratis.
-                  </span>
+                  Asesoría mensual continua ·{" "}
+                  <span className="italic text-mint">tarifa fija.</span>
                 </p>
                 <p className="mt-4 max-w-xl text-porcelain/70">
-                  Asesoría continua a fee mensual fijo. Sin sorpresas, sin
-                  honorarios variables, sin sobrecargos por hora.
+                  Las empresas que optan por una asesoría anual reciben, sin
+                  costo adicional, la elaboración o actualización de su
+                  Reglamento Interno de Orden, Higiene y Seguridad.
                 </p>
               </div>
               <div className="flex flex-col items-start gap-3">

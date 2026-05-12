@@ -93,7 +93,7 @@ export function Navbar() {
         style={{ scaleX: progress }}
       />
 
-      {/* Top status bar — desktop */}
+      {/* Top status bar — desktop · phone only, top-right */}
       <div
         className={cn(
           "fixed inset-x-0 top-0 z-[60] hidden h-9 items-center backdrop-blur-xl transition-all duration-500 md:flex",
@@ -103,8 +103,14 @@ export function Navbar() {
             : "border-b border-obsidian/20 bg-cape/85 text-mint/70",
         )}
       >
-        <div className="container-page flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em]">
-          <span className="flex items-center gap-2">
+        <div className="container-page flex items-center justify-end font-mono text-[10px] uppercase tracking-[0.22em]">
+          <a
+            href={`tel:${site.contact.phoneIntl}`}
+            className={cn(
+              "flex items-center gap-2 transition-colors",
+              isLight ? "hover:text-cape" : "hover:text-mint",
+            )}
+          >
             <span className="relative flex h-1.5 w-1.5">
               <span
                 className={cn(
@@ -119,22 +125,8 @@ export function Navbar() {
                 )}
               />
             </span>
-            Disponibles · Lun a Vie · 09:00 — 19:00 CLT
-          </span>
-          <span className="flex items-center gap-6">
-            <a
-              href={`tel:${site.contact.phoneIntl}`}
-              className={isLight ? "hover:text-cape" : "hover:text-mint"}
-            >
-              {site.contact.phone}
-            </a>
-            <a
-              href={`mailto:${site.contact.email}`}
-              className={isLight ? "hover:text-cape" : "hover:text-mint"}
-            >
-              {site.contact.email}
-            </a>
-          </span>
+            {site.contact.phone}
+          </a>
         </div>
       </div>
 
@@ -251,14 +243,18 @@ export function Navbar() {
               <Link
                 href="#contacto"
                 className={cn(
-                  "group relative hidden items-center gap-2 overflow-hidden rounded-pill px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em] transition-colors md:inline-flex",
+                  "group relative hidden items-center gap-2 overflow-hidden rounded-pill px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] shadow-[0_8px_28px_-8px_rgba(218,246,239,0.35)] transition-all duration-300 md:inline-flex",
                   isLight
-                    ? "bg-cape text-porcelain hover:bg-cape-700"
-                    : "bg-mint text-cape hover:bg-mint-dark",
+                    ? "bg-cape text-porcelain hover:bg-cape-700 hover:shadow-[0_10px_32px_-8px_rgba(10,37,54,0.45)]"
+                    : "bg-mint text-cape hover:bg-mint-dark hover:shadow-[0_10px_32px_-8px_rgba(218,246,239,0.6)]",
                 )}
               >
-                <span className="relative z-10">Agenda · 30 min</span>
-                <ArrowUpRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                />
+                <span className="relative z-10">Reunámonos · 30 min</span>
+                <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <button
                 type="button"
@@ -360,9 +356,9 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           <Link
             href="#contacto"
             onClick={onClose}
-            className="flex w-full items-center justify-center gap-2 rounded-pill bg-mint px-6 py-4 font-mono text-[10px] uppercase tracking-[0.22em] text-cape"
+            className="flex w-full items-center justify-center gap-2 rounded-pill bg-mint px-6 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-cape"
           >
-            Agenda una reunión · 30 min
+            Reunámonos · 30 min
             <ArrowUpRight className="h-4 w-4" />
           </Link>
           <div className="flex flex-col gap-2 text-mint/70">

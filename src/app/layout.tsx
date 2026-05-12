@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { fraunces, inter, jetbrainsMono } from "@/lib/fonts";
+import { spectral, inter, jetbrainsMono } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { Loader } from "@/components/providers/Loader";
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-CL"
-      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${spectral.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body>
         <Loader />

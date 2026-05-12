@@ -1,8 +1,8 @@
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Spectral, Inter, JetBrains_Mono } from "next/font/google";
 
-export const fraunces = Fraunces({
+export const spectral = Spectral({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-spectral",
   display: "swap",
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
