@@ -24,6 +24,7 @@ export function Manifesto() {
   return (
     <section
       id="manifiesto"
+      aria-labelledby="manifiesto-heading"
       data-section-theme="light"
       className="relative bg-porcelain text-cape"
     >
@@ -38,7 +39,10 @@ export function Manifesto() {
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="font-serif text-display-lg font-medium leading-[1.02] tracking-tight text-balance">
+              <h2
+                id="manifiesto-heading"
+                className="font-serif text-display-lg font-medium leading-[1.02] tracking-tight text-balance"
+              >
                 El mundo laboral no se detiene.{" "}
                 <span className="italic text-obsidian/70">
                   Tampoco nosotros.

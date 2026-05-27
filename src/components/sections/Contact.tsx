@@ -9,6 +9,7 @@ export function Contact() {
   return (
     <section
       id="contacto"
+      aria-labelledby="contacto-heading"
       data-section-theme="dark"
       className="relative overflow-hidden bg-cape text-porcelain noise"
     >
@@ -24,7 +25,10 @@ export function Contact() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="font-serif text-display-lg font-medium leading-[1.05] text-balance">
+            <h2
+              id="contacto-heading"
+              className="font-serif text-display-lg font-medium leading-[1.05] text-balance"
+            >
               Cuéntanos tu caso.{" "}
               <span className="italic text-mint">
                 Volvemos en menos de 24 horas hábiles.

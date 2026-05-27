@@ -47,6 +47,7 @@ export function Services() {
   return (
     <section
       id="servicios"
+      aria-labelledby="servicios-heading"
       data-section-theme="light"
       className="relative bg-porcelain text-cape"
     >
@@ -58,9 +59,19 @@ export function Services() {
           </p>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="max-w-3xl font-serif text-display-lg font-medium text-balance">
+          <h2
+            id="servicios-heading"
+            className="max-w-3xl font-serif text-display-lg font-medium text-balance"
+          >
             Lo que resolvemos para ti.
           </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mt-5 max-w-2xl text-pretty text-cape/75">
+            Servicios legales especializados en derecho laboral, compliance,
+            negociación colectiva, migraciones y litigación para empresas en
+            Chile.
+          </p>
         </Reveal>
         <StaggerGroup className="mt-12 border-y border-obsidian/15 md:mt-16">
           {services.map((s) => (

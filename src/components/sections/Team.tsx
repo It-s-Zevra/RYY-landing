@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import { Reveal, StaggerGroup } from "@/components/ui/Reveal";
+import { site } from "@/lib/site";
 
 const team = [
   {
@@ -11,7 +12,7 @@ const team = [
     education: "Universidad de Chile · UAB España · UDD",
     specialty: "Litigación de alta complejidad · Salud ocupacional",
     bio: "Abogado de la Universidad de Chile titulado con distinción máxima, Máster en Derecho de los Negocios (UAB, España) y Diplomado en Compliance y Gobiernos Corporativos (UDD). Especialista en litigación de alta complejidad y asesoría 360°, con trayectoria previa como Asociado Senior en GNP Canales y abogado en la Fiscalía de la Asociación Chilena de Seguridad ACHS. Actualmente lidera la firma y es docente en la Universidad de Santiago de Chile, combinando la excelencia académica con la gestión estratégica del riesgo laboral, especialista en materias de salud ocupacional, accidentes del trabajo y enfermedades profesionales.",
-    linkedin: "#",
+    linkedin: site.contact.linkedin,
   },
   {
     name: "Josefa Yuraszeck Bravo",
@@ -19,7 +20,7 @@ const team = [
     education: "Universidad de los Andes · Magíster UAI",
     specialty: "Consultoría corporativa · Relaciones sindicales",
     bio: "Abogada de la Universidad de los Andes y Magíster en Derecho Laboral y Seguridad Social (UAI). Especialista en consultoría corporativa, investigaciones críticas y relaciones sindicales. Cuenta con amplia experiencia asesorando a grandes empresas como Cencosud, SMU y Gasco en firmas de élite como GNP Canales y Rodríguez Coronel. En Rivas & Yuraszeck, lidera el área de litigios enfocándose en la estabilidad y continuidad del negocio, otorgando un servicio de representación del más alto nivel.",
-    linkedin: "#",
+    linkedin: site.contact.linkedin,
   },
 ];
 
@@ -27,6 +28,7 @@ export function Team() {
   return (
     <section
       id="equipo"
+      aria-labelledby="equipo-heading"
       data-section-theme="dark"
       className="relative overflow-hidden bg-cape text-porcelain noise"
     >
@@ -41,7 +43,10 @@ export function Team() {
           </p>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="max-w-3xl font-serif text-display-lg font-medium text-balance">
+          <h2
+            id="equipo-heading"
+            className="max-w-3xl font-serif text-display-lg font-medium text-balance"
+          >
             Diez años no se{" "}
             <span className="italic text-mint">improvisan.</span>
           </h2>

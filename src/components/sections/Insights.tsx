@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, StaggerGroup } from "@/components/ui/Reveal";
+import { site } from "@/lib/site";
 
 const insights = [
   {
@@ -26,6 +27,7 @@ export function Insights() {
   return (
     <section
       id="insights"
+      aria-labelledby="insights-heading"
       data-section-theme="light"
       className="bg-porcelain text-cape"
     >
@@ -39,14 +41,20 @@ export function Insights() {
               </p>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="max-w-3xl font-serif text-display-lg font-medium text-balance">
+              <h2
+                id="insights-heading"
+                className="max-w-3xl font-serif text-display-lg font-medium text-balance"
+              >
                 Lo que estamos pensando.
               </h2>
             </Reveal>
           </div>
           <Reveal delay={0.1}>
             <a
-              href="#"
+              href={site.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Síguenos en LinkedIn — ${site.legalName}`}
               className="link-underline inline-flex items-center gap-2 self-start font-mono text-eyebrow uppercase tracking-widest text-cape md:self-end"
             >
               Síguenos en LinkedIn

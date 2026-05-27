@@ -30,6 +30,7 @@ export function Process() {
   return (
     <section
       id="proceso"
+      aria-labelledby="proceso-heading"
       data-section-theme="light"
       className="relative bg-mint text-cape"
     >
@@ -41,7 +42,10 @@ export function Process() {
           </p>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="max-w-3xl font-serif text-display-lg font-medium text-balance">
+          <h2
+            id="proceso-heading"
+            className="max-w-3xl font-serif text-display-lg font-medium text-balance"
+          >
             Un proceso pensado para no hacerte perder tiempo.
           </h2>
         </Reveal>

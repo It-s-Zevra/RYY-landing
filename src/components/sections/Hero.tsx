@@ -26,6 +26,7 @@ export function Hero() {
     <section
       ref={ref}
       id="inicio"
+      aria-labelledby="hero-heading"
       data-section-theme="dark"
       className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-cape text-porcelain"
     >
@@ -60,6 +61,16 @@ export function Hero() {
         />
       </div>
 
+      {/* SEO summary — invisible, keyword-rich context for crawlers and screen readers */}
+      <p className="sr-only">
+        RYY Abogados (Rivas &amp; Yuraszeck Abogados) es un estudio jurídico
+        chileno con más de diez años de experiencia, especializado en derecho
+        laboral para empresas en Santiago de Chile. Asesoría laboral, litigios
+        en tribunales del trabajo, compliance laboral, Ley Karin, negociación
+        colectiva, migraciones, salud ocupacional y protección de datos
+        personales.
+      </p>
+
       {/* Content */}
       <motion.div
         style={{ opacity: fade }}
@@ -83,7 +94,10 @@ export function Hero() {
         </motion.p>
 
         {/* Headline */}
-        <h1 className="max-w-[14ch] font-serif text-[clamp(2.4rem,5.6vw,4.8rem)] font-medium leading-[0.98] tracking-tight text-balance text-porcelain">
+        <h1
+          id="hero-heading"
+          className="max-w-[14ch] font-serif text-[clamp(2.4rem,5.6vw,4.8rem)] font-medium leading-[0.98] tracking-tight text-balance text-porcelain"
+        >
           <span className="block">
             <MaskReveal delay={0.15} eager>Tu aliado</MaskReveal>
           </span>
