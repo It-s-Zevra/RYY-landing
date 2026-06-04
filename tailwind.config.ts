@@ -35,9 +35,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-spectral)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+        serif: ["var(--font-fraunces)", "Georgia", "serif"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       fontSize: {
         "display-2xl": ["clamp(3.2rem, 8vw, 7rem)", { lineHeight: "1.02", letterSpacing: "-0.025em" }],

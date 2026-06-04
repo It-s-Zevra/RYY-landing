@@ -1,23 +1,15 @@
-import { Spectral, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
-export const spectral = Spectral({
+// Editorial display serif — premium optical, used for headlines.
+export const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-spectral",
+  variable: "--font-fraunces",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
-export const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
-
-export const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  weight: ["400", "500"],
-});
+// Geist — the AI/SaaS grotesque, used for body, UI and mono.
+export const geistSans = GeistSans;
+export const geistMono = GeistMono;

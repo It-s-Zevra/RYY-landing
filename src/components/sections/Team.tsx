@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Linkedin } from "lucide-react";
 import { Reveal, StaggerGroup } from "@/components/ui/Reveal";
-import { site } from "@/lib/site";
 
 const team = [
   {
@@ -12,7 +12,9 @@ const team = [
     education: "Universidad de Chile · UAB España · UDD",
     specialty: "Litigación de alta complejidad · Salud ocupacional",
     bio: "Abogado de la Universidad de Chile titulado con distinción máxima, Máster en Derecho de los Negocios (UAB, España) y Diplomado en Compliance y Gobiernos Corporativos (UDD). Especialista en litigación de alta complejidad y asesoría 360°, con trayectoria previa como Asociado Senior en GNP Canales y abogado en la Fiscalía de la Asociación Chilena de Seguridad ACHS. Actualmente lidera la firma y es docente en la Universidad de Santiago de Chile, combinando la excelencia académica con la gestión estratégica del riesgo laboral, especialista en materias de salud ocupacional, accidentes del trabajo y enfermedades profesionales.",
-    linkedin: site.contact.linkedin,
+    image:
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606912/CesarCorpo-5_upgu1c.jpg",
+    linkedin: "https://www.linkedin.com/in/carivasca/",
   },
   {
     name: "Josefa Yuraszeck Bravo",
@@ -20,7 +22,9 @@ const team = [
     education: "Universidad de los Andes · Magíster UAI",
     specialty: "Consultoría corporativa · Relaciones sindicales",
     bio: "Abogada de la Universidad de los Andes y Magíster en Derecho Laboral y Seguridad Social (UAI). Especialista en consultoría corporativa, investigaciones críticas y relaciones sindicales. Cuenta con amplia experiencia asesorando a grandes empresas como Cencosud, SMU y Gasco en firmas de élite como GNP Canales y Rodríguez Coronel. En Rivas & Yuraszeck, lidera el área de litigios enfocándose en la estabilidad y continuidad del negocio, otorgando un servicio de representación del más alto nivel.",
-    linkedin: site.contact.linkedin,
+    image:
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606911/CesarCorpo-6_qrjpbb.jpg",
+    linkedin: "https://www.linkedin.com/in/josefa-yuraszeck-758900127/",
   },
 ];
 
@@ -90,6 +94,7 @@ function TeamCard({
   education,
   specialty,
   bio,
+  image,
   linkedin,
 }: {
   name: string;
@@ -97,6 +102,7 @@ function TeamCard({
   education: string;
   specialty: string;
   bio: string;
+  image: string;
   linkedin: string;
 }) {
   const initials = name
@@ -114,14 +120,22 @@ function TeamCard({
       transition={{ duration: 0.85, ease: [0.19, 1, 0.22, 1] }}
       className="group relative flex flex-col overflow-hidden rounded-lg border border-mint/10 bg-cape-700/40 backdrop-blur-sm transition-colors duration-500 hover:border-mint/25"
     >
-      {/* Photo / placeholder */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-mint/10 bg-cape-700">
+      {/* Photo */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-mint/10 bg-cape-700 sm:aspect-[5/6]">
+        {/* Fallback shown beneath the photo */}
         <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_30%,rgba(78,111,134,0.6),rgba(10,37,54,1))]" />
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="font-serif text-7xl font-medium text-mint/15">
             {initials}
           </span>
         </div>
+        <Image
+          src={image}
+          alt={`${name} — ${role} de Rivas & Yuraszeck`}
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-cape via-cape/40 to-transparent opacity-90" />
 
         <a

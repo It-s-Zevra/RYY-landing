@@ -59,11 +59,32 @@ export const site = {
   areaServed: ["Chile", "Santiago", "Región Metropolitana"],
   logos: {
     light:
-      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1777776229/icoW1_dat3ng.png",
-    dark: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1777776230/icoB1_roek5w.png",
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780607887/icoLig_kmkt7v.png",
+    dark: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780607888/icoDark_p02cqp.png",
   },
+  // Favicon / app icon
+  icon: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/iconICO_nufvw0.png",
+  // Cinematic backdrop used behind the loader
   banner:
     "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1779852990/ChatGPT_Image_26_may_2026_23_35_59_1_m5imjb.png",
+  // Social share card (Open Graph / Twitter) shown when the link is shared
+  ogImage:
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780608293/ChatGPT_Image_4_jun_2026_17_24_20_1_qdvhhc.png",
+  // Logos of companies that have trusted the firm — rendered in a marquee
+  clients: [
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606917/icon12_oqqfpz.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/icon11_vh7hha.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/icon9_jiowju.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/icon8_duwlah.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/icon10_dgiei6.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/icon7_hvzu2p.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/icon6_psdo6v.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606918/icon5_hyghsh.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606919/icon4_lpu1of.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606919/icon1_mbasr4.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606919/icon2_amzx5i.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606919/icon3_d15hox.png",
+  ],
   hero: {
     bg: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1778593188/ChatGPT_Image_12_may_2026_09_38_07_jl6kwf.png",
   },

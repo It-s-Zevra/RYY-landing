@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { spectral, inter, jetbrainsMono } from "@/lib/fonts";
+import { fraunces, geistSans, geistMono } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { Loader } from "@/components/providers/Loader";
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     countryName: "Chile",
     images: [
       {
-        url: site.banner,
+        url: site.ogImage,
         width: 1200,
         height: 630,
         alt: `${site.legalName} — Asesoría laboral y empresarial en Chile`,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: site.description,
-    images: [site.banner],
+    images: [site.ogImage],
     creator: "@RYYabogados",
     site: "@RYYabogados",
   },
@@ -79,12 +79,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: site.logos.dark, type: "image/png" },
-      { url: site.logos.dark, sizes: "32x32", type: "image/png" },
-      { url: site.logos.dark, sizes: "16x16", type: "image/png" },
+      { url: site.icon, type: "image/png" },
+      { url: site.icon, sizes: "32x32", type: "image/png" },
+      { url: site.icon, sizes: "16x16", type: "image/png" },
     ],
-    shortcut: site.logos.dark,
-    apple: [{ url: site.logos.dark, sizes: "180x180", type: "image/png" }],
+    shortcut: site.icon,
+    apple: [{ url: site.icon, sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
   other: {
@@ -115,7 +115,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-CL"
-      className={`${spectral.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${fraunces.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />

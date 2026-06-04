@@ -40,6 +40,9 @@ const team = [
     description:
       "Abogado de la Universidad de Chile titulado con distinción máxima, Máster en Derecho de los Negocios (UAB, España) y Diplomado en Compliance y Gobiernos Corporativos (UDD). Especialista en litigación de alta complejidad, salud ocupacional y asesoría 360°.",
     alma: ["Universidad de Chile", "Universitat Autònoma de Barcelona", "Universidad del Desarrollo"],
+    image:
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606912/CesarCorpo-5_upgu1c.jpg",
+    linkedin: "https://www.linkedin.com/in/carivasca/",
   },
   {
     name: "Josefa Yuraszeck Bravo",
@@ -47,6 +50,9 @@ const team = [
     description:
       "Abogada de la Universidad de los Andes y Magíster en Derecho Laboral y Seguridad Social (UAI). Especialista en consultoría corporativa, investigaciones críticas y relaciones sindicales.",
     alma: ["Universidad de los Andes", "Universidad Adolfo Ibáñez"],
+    image:
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606911/CesarCorpo-6_qrjpbb.jpg",
+    linkedin: "https://www.linkedin.com/in/josefa-yuraszeck-758900127/",
   },
 ];
 
@@ -90,11 +96,11 @@ export function JsonLd() {
       url: site.url,
       logo: {
         "@type": "ImageObject",
-        url: site.logos.dark,
+        url: site.icon,
         width: 1200,
         height: 1200,
       },
-      image: site.banner,
+      image: site.ogImage,
       description: site.description,
       slogan: site.tagline,
       founder: team.map((m) => ({
@@ -182,7 +188,7 @@ export function JsonLd() {
       inLanguage: site.locale,
       primaryImageOfPage: {
         "@type": "ImageObject",
-        url: site.banner,
+        url: site.ogImage,
       },
     },
     {
@@ -219,6 +225,9 @@ export function JsonLd() {
       name: m.name,
       jobTitle: m.role,
       description: m.description,
+      image: m.image,
+      url: m.linkedin,
+      sameAs: [m.linkedin],
       worksFor: { "@id": organizationId },
       alumniOf: m.alma.map((a) => ({
         "@type": "EducationalOrganization",
