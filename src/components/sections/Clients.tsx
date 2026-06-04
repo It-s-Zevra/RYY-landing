@@ -53,14 +53,14 @@ export function Clients() {
               {logos.map((src, i) => (
                 <li
                   key={`${copy}-${i}`}
-                  className="relative h-10 w-28 shrink-0 md:h-12 md:w-36"
+                  className="relative h-16 w-44 shrink-0 md:h-24 md:w-60"
                 >
                   <Image
                     src={src}
                     alt=""
                     fill
-                    sizes="160px"
-                    className="object-contain opacity-45 transition-all duration-500 ease-out-expo group-hover:opacity-70 hover:!opacity-100"
+                    sizes="(min-width: 768px) 240px, 176px"
+                    className="object-contain opacity-50 transition-all duration-500 ease-out-expo group-hover:opacity-75 hover:!opacity-100"
                   />
                 </li>
               ))}

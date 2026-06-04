@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
-const HOLD = 2400;
+const HOLD = 2200;
 
 export function Loader() {
   const [phase, setPhase] = useState<"in" | "out" | "done">("in");
@@ -27,7 +27,7 @@ export function Loader() {
       sessionStorage.setItem("ryy:loader", "1");
       document.documentElement.classList.remove("lenis-stopped");
       document.body.style.overflow = "";
-    }, HOLD + 1100);
+    }, HOLD + 1000);
 
     return () => {
       clearTimeout(t1);
@@ -45,92 +45,51 @@ export function Loader() {
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-cape"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.85, ease: EASE }}
+          transition={{ duration: 0.8, ease: EASE }}
         >
-          {/* Banner image — cinematic backdrop */}
+          {/* Flat backdrop with a single soft radial glow — no imagery */}
           <motion.div
             aria-hidden
-            className="pointer-events-none absolute inset-0"
-            initial={{ opacity: 0, scale: 1.08 }}
+            className="pointer-events-none absolute h-[80vmin] w-[80vmin] rounded-full bg-mint/[0.06] blur-3xl"
+            initial={{ scale: 0.7, opacity: 0 }}
             animate={
               phase === "out"
-                ? { opacity: 0, scale: 1.12 }
-                : { opacity: 1, scale: 1 }
-            }
-            transition={{
-              duration: phase === "out" ? 0.75 : 1.6,
-              ease: EASE,
-            }}
-          >
-            <Image
-              src={site.banner}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              quality={90}
-              className="object-cover object-center"
-            />
-          </motion.div>
-
-          {/* Atmospheric radial mint glow */}
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute h-[85vmin] w-[85vmin] rounded-full bg-mint/[0.07] blur-3xl"
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={
-              phase === "out"
-                ? { scale: 1.4, opacity: 0 }
+                ? { scale: 1.25, opacity: 0 }
                 : { scale: 1, opacity: 1 }
             }
-            transition={{ duration: phase === "out" ? 0.8 : 1.6, ease: EASE }}
+            transition={{ duration: phase === "out" ? 0.7 : 1.5, ease: EASE }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_70%_at_50%_50%,transparent_30%,rgba(6,24,42,0.6)_100%)]"
           />
 
-          {/* Editorial darkening — keeps banner legible while ensuring caption contrast */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-cape/35"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cape via-cape/30 to-transparent"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_70%_at_50%_50%,transparent_25%,rgba(6,24,42,0.55)_100%)]"
-          />
-
-          {/* Logo + cinematic shimmer */}
+          {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94, filter: "blur(8px)" }}
+            initial={{ opacity: 0, scale: 0.96, filter: "blur(6px)" }}
             animate={
               phase === "out"
-                ? {
-                    opacity: 0,
-                    scale: 1.04,
-                    y: -16,
-                    filter: "blur(0px)",
-                  }
+                ? { opacity: 0, scale: 1.03, y: -12, filter: "blur(0px)" }
                 : { opacity: 1, scale: 1, filter: "blur(0px)" }
             }
             transition={{
-              duration: phase === "out" ? 0.75 : 1.3,
+              duration: phase === "out" ? 0.7 : 1.2,
               ease: EASE,
-              delay: phase === "in" ? 0.35 : 0,
+              delay: phase === "in" ? 0.25 : 0,
             }}
             className="relative z-10"
           >
             {/* Soft glow halo — breathes once */}
             <motion.span
               aria-hidden
-              className="absolute -inset-12 rounded-full bg-mint/15 blur-3xl"
+              className="absolute -inset-10 rounded-full bg-mint/12 blur-3xl"
               initial={{ opacity: 0, scale: 0.7 }}
               animate={
                 phase === "in"
-                  ? { opacity: [0, 0.7, 0.35], scale: [0.7, 1.05, 1] }
+                  ? { opacity: [0, 0.6, 0.3], scale: [0.7, 1.05, 1] }
                   : { opacity: 0 }
               }
-              transition={{ duration: 2.2, ease: EASE, delay: 0.4 }}
+              transition={{ duration: 2, ease: EASE, delay: 0.35 }}
             />
 
             <div className="relative">
@@ -140,13 +99,13 @@ export function Loader() {
                     ? {
                         filter: [
                           "drop-shadow(0 0 0 rgba(218,246,239,0))",
-                          "drop-shadow(0 0 32px rgba(218,246,239,0.5))",
-                          "drop-shadow(0 0 14px rgba(218,246,239,0.18))",
+                          "drop-shadow(0 0 26px rgba(218,246,239,0.45))",
+                          "drop-shadow(0 0 12px rgba(218,246,239,0.16))",
                         ],
                       }
                     : {}
                 }
-                transition={{ duration: 2, ease: EASE, delay: 0.5 }}
+                transition={{ duration: 1.8, ease: EASE, delay: 0.45 }}
               >
                 <Image
                   src={site.logos.light}
@@ -154,8 +113,8 @@ export function Loader() {
                   width={680}
                   height={400}
                   priority
-                  sizes="(min-width: 1024px) 24rem, (min-width: 768px) 18rem, 12rem"
-                  className="h-auto w-[12rem] md:w-[16rem] lg:w-[22rem]"
+                  sizes="(min-width: 1024px) 15rem, (min-width: 768px) 12rem, 9rem"
+                  className="h-auto w-[9rem] md:w-[12rem] lg:w-[15rem]"
                 />
               </motion.div>
 
@@ -169,28 +128,24 @@ export function Loader() {
                   backgroundSize: "250% 100%",
                 }}
                 initial={{ backgroundPositionX: "220%" }}
-                animate={
-                  phase === "in" ? { backgroundPositionX: "-120%" } : {}
-                }
-                transition={{ duration: 1.7, ease: EASE, delay: 0.8 }}
+                animate={phase === "in" ? { backgroundPositionX: "-120%" } : {}}
+                transition={{ duration: 1.6, ease: EASE, delay: 0.7 }}
               />
             </div>
           </motion.div>
 
           {/* Editorial caption */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={
-              phase === "out"
-                ? { opacity: 0, y: -10 }
-                : { opacity: 1, y: 0 }
+              phase === "out" ? { opacity: 0, y: -8 } : { opacity: 1, y: 0 }
             }
             transition={{
-              duration: phase === "out" ? 0.45 : 0.9,
+              duration: phase === "out" ? 0.4 : 0.85,
               ease: EASE,
-              delay: phase === "out" ? 0 : 1.4,
+              delay: phase === "out" ? 0 : 1.2,
             }}
-            className="relative z-10 mt-14 flex items-center gap-5 font-mono text-[10px] uppercase tracking-[0.32em] text-mint/65"
+            className="relative z-10 mt-12 flex items-center gap-5 font-mono text-[10px] uppercase tracking-[0.32em] text-mint/65"
           >
             <span className="h-px w-12 bg-mint/35" />
             Rivas <span className="text-mint/35">·</span> Yuraszeck
@@ -199,13 +154,11 @@ export function Loader() {
 
           <motion.p
             initial={{ opacity: 0 }}
-            animate={
-              phase === "out" ? { opacity: 0 } : { opacity: 1 }
-            }
+            animate={phase === "out" ? { opacity: 0 } : { opacity: 1 }}
             transition={{
-              duration: 0.6,
+              duration: 0.55,
               ease: EASE,
-              delay: phase === "out" ? 0 : 1.7,
+              delay: phase === "out" ? 0 : 1.5,
             }}
             className="relative z-10 mt-3 font-mono text-[9px] uppercase tracking-[0.4em] text-mint/35"
           >

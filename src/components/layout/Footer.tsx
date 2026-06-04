@@ -9,20 +9,7 @@ export function Footer() {
       data-section-theme="dark"
       className="relative overflow-hidden bg-cape text-porcelain"
     >
-      {/* Editorial tagline — mirrors the hero headline */}
-      <div
-        aria-hidden
-        className="container-page select-none border-b border-obsidian/30 pb-4 pt-16 md:pt-24"
-      >
-        <p className="font-serif text-[clamp(1.9rem,7vw,5.5rem)] font-medium leading-[0.98] tracking-tight text-balance text-porcelain/85">
-          Derecho laboral.{" "}
-          <span className="italic text-mint/40">
-            Sin solemnidad innecesaria.
-          </span>
-        </p>
-      </div>
-
-      <div className="container-page py-16">
+      <div className="container-page py-16 pt-20 md:pt-28">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
           {/* Brand */}
           <div className="md:col-span-4">

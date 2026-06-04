@@ -120,7 +120,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
-        <link rel="preload" as="image" href={site.banner} fetchPriority="high" />
+        <link rel="preload" as="image" href={site.hero.bg} fetchPriority="high" />
         <JsonLd />
       </head>
       <body>
