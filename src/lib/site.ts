@@ -93,6 +93,8 @@ export const site = {
     phoneIntl: "+56977660481",
     whatsapp: "https://wa.me/56977660481",
     email: "contacto@ryyabogados.cl",
+    booking:
+      "https://outlook.office.com/bookwithme/user/20a81cc407664665855b1eb45f2a7482@rivaslegal.cl/meetingtype/vXHphFMulUKfxHQKGezNLw2?anonymous&ismsaljsauthenabled&ep=mlink",
     address: "Santiago de Chile",
     addressLocality: "Santiago",
     addressRegion: "Región Metropolitana",
