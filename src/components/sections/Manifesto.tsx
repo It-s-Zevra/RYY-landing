@@ -51,7 +51,7 @@ export function Manifesto() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-md text-pretty text-obsidian/75">
-                Una decisión mal tomada hoy puede costar caro mañana. Por eso no
+                Una decisión mal tomada hoy, puede costar caro mañana. Por eso no
                 solo entregamos asesoría jurídica: nos involucramos con el
                 negocio de nuestros clientes y los acompañamos con criterio,
                 experiencia y compromiso real.
