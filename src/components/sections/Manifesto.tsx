@@ -96,12 +96,12 @@ export function Manifesto() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.7, ease: EASE, delay: 0.08 * i }}
-                  className="flex flex-col gap-3 bg-porcelain p-6 md:p-7"
+                  className="flex min-w-0 flex-col gap-3 bg-porcelain p-6 md:p-7"
                 >
                   <span className="font-mono text-eyebrow uppercase tracking-widest text-mint-dark">
                     0{i + 1} · {p.label}
                   </span>
-                  <span className="font-serif text-lg font-medium leading-snug text-cape md:text-xl">
+                  <span className="font-serif text-lg font-medium leading-snug text-cape [overflow-wrap:anywhere] md:text-xl">
                     {p.text}
                   </span>
                 </motion.li>
