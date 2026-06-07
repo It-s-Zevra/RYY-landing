@@ -35,7 +35,7 @@ export function Manifesto() {
             <Reveal>
               <p className="eyebrow mb-4 flex items-center gap-3 text-obsidian">
                 <span className="h-px w-8 bg-obsidian" />
-                02 / Por qué Rivas Legal
+                02 / Por qué RY Legal
               </p>
             </Reveal>
             <Reveal delay={0.05}>

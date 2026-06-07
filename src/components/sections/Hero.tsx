@@ -63,7 +63,7 @@ export function Hero() {
 
       {/* SEO summary — invisible, keyword-rich context for crawlers and screen readers */}
       <p className="sr-only">
-        RYY Abogados (Rivas &amp; Yuraszeck Abogados) es un estudio jurídico
+        RY Legal (Rivas &amp; Yuraszeck Abogados) es un estudio jurídico
         chileno con más de diez años de experiencia, especializado en derecho
         laboral para empresas en Santiago de Chile. Asesoría laboral, litigios
         en tribunales del trabajo, compliance laboral, Ley Karin, negociación

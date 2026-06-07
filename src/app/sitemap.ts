@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const sections = ["#equipo", "#servicios", "#proceso", "#insights", "#contacto"];
+  const sections = ["#servicios", "#proceso", "#insights", "#contacto"];
 
   return [
     {
@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
+    },
+    {
+      url: `${site.url}/sobre-nosotros`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     ...sections.map((s) => ({
       url: `${site.url}/${s}`,

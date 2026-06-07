@@ -25,7 +25,7 @@ export function Clients() {
 
   return (
     <section
-      aria-label="Empresas que confían en RYY Abogados"
+      aria-label="Empresas que confían en RY Legal"
       data-section-theme="light"
       className="relative overflow-hidden bg-porcelain text-cape"
     >

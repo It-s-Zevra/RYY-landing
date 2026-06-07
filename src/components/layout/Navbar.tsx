@@ -160,7 +160,7 @@ export function Navbar() {
           >
             {/* Logo — switches between white/dark by section theme */}
             <Link
-              href="#inicio"
+              href="/"
               aria-label={`${site.legalName} — Inicio`}
               className="group relative flex items-center justify-self-start"
             >
@@ -241,7 +241,7 @@ export function Navbar() {
             {/* Right side */}
             <div className="flex items-center gap-2 justify-self-end">
               <Link
-                href="#contacto"
+                href="/#contacto"
                 className={cn(
                   "group relative hidden items-center gap-2 overflow-hidden rounded-pill px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] shadow-[0_8px_28px_-8px_rgba(218,246,239,0.35)] transition-all duration-300 md:inline-flex",
                   isLight
@@ -301,7 +301,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       >
         <div className="container-page flex h-20 items-center justify-between">
           <Link
-            href="#inicio"
+            href="/"
             onClick={onClose}
             aria-label="Inicio"
             className="flex items-center"
@@ -354,7 +354,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 
         <div className="container-page space-y-6 pb-12 pt-10">
           <Link
-            href="#contacto"
+            href="/#contacto"
             onClick={onClose}
             className="flex w-full items-center justify-center gap-2 rounded-pill bg-mint px-6 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-cape"
           >

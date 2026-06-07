@@ -62,8 +62,6 @@ export const metadata: Metadata = {
     title: TITLE,
     description: site.description,
     images: [site.ogImage],
-    creator: "@RYYabogados",
-    site: "@RYYabogados",
   },
   robots: {
     index: true,

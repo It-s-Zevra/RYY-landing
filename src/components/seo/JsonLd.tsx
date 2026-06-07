@@ -58,8 +58,8 @@ const team = [
 
 const faqs = [
   {
-    q: "¿En qué se especializa RYY Abogados?",
-    a: "RYY Abogados (Rivas & Yuraszeck Abogados) es un estudio jurídico chileno con más de 10 años de experiencia, especializado en derecho laboral para empresas: litigios, Ley Karin, compliance laboral, negociación colectiva, migraciones y protección de datos personales.",
+    q: "¿En qué se especializa RY Legal?",
+    a: "RY Legal (Rivas & Yuraszeck Abogados) es un estudio jurídico chileno con más de 10 años de experiencia, especializado en derecho laboral para empresas: litigios, Ley Karin, compliance laboral, negociación colectiva, migraciones y protección de datos personales.",
   },
   {
     q: "¿Dónde están ubicados?",
@@ -209,8 +209,8 @@ export function JsonLd() {
         {
           "@type": "ListItem",
           position: 3,
-          name: "Equipo",
-          item: `${site.url}#equipo`,
+          name: "Nosotros",
+          item: `${site.url}/sobre-nosotros`,
         },
         {
           "@type": "ListItem",

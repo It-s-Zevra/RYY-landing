@@ -26,7 +26,7 @@ export function Footer() {
               compliance y asesoría empresarial.
             </p>
             <Link
-              href="#contacto"
+              href="/#contacto"
               className="mt-6 inline-flex items-center gap-2 rounded-pill border border-mint/30 px-5 py-2.5 font-mono text-eyebrow uppercase tracking-widest text-mint transition-colors hover:bg-mint hover:text-cape"
             >
               Agenda una reunión
@@ -51,17 +51,17 @@ export function Footer() {
             <p className="eyebrow text-mint/60">Firma</p>
             <ul className="mt-4 space-y-2 text-sm text-porcelain/80">
               <li>
-                <Link href="#equipo" className="link-underline">
-                  Equipo
+                <Link href="/sobre-nosotros" className="link-underline">
+                  Nosotros
                 </Link>
               </li>
               <li>
-                <Link href="#proceso" className="link-underline">
+                <Link href="/#proceso" className="link-underline">
                   Proceso
                 </Link>
               </li>
               <li>
-                <Link href="#insights" className="link-underline">
+                <Link href="/#insights" className="link-underline">
                   Insights
                 </Link>
               </li>
@@ -105,11 +105,10 @@ export function Footer() {
 
       <div className="border-t border-obsidian/30">
         <div className="container-page flex flex-col items-start justify-between gap-4 py-6 text-xs text-porcelain/50 md:flex-row md:items-center md:gap-6">
-          <p>© 2026 {site.legalName}. Todos los derechos reservados.</p>
+          <p>© 2026 {site.name}. Todos los derechos reservados.</p>
           <div className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-5">
-            <p className="font-mono uppercase tracking-widest">
-              <span className="text-mint/60">Antes</span> Rivas Legal ·{" "}
-              <span className="text-mint/60">Ahora</span> RYY Abogados
+            <p className="font-mono uppercase tracking-widest text-porcelain/40">
+              {site.legalName}
             </p>
             <span aria-hidden className="hidden h-3 w-px bg-mint/15 md:block" />
             <a

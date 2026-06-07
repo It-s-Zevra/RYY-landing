@@ -5,7 +5,17 @@ import Image from "next/image";
 import { Linkedin } from "lucide-react";
 import { Reveal, StaggerGroup } from "@/components/ui/Reveal";
 
-const team = [
+type Member = {
+  name?: string;
+  role: string;
+  education?: string;
+  specialty?: string;
+  bio?: string;
+  image: string;
+  linkedin?: string;
+};
+
+const team: Member[] = [
   {
     name: "César Rivas Calderón",
     role: "Socio Fundador",
@@ -26,9 +36,14 @@ const team = [
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606911/CesarCorpo-6_qrjpbb.jpg",
     linkedin: "https://www.linkedin.com/in/josefa-yuraszeck-758900127/",
   },
+  {
+    role: "Procuradora",
+    image:
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780855143/CesarCorpo-3_1_ugmdcp.jpg",
+  },
 ];
 
-export function Team() {
+export function AboutTeam() {
   return (
     <section
       id="equipo"
@@ -39,26 +54,26 @@ export function Team() {
       {/* subtle gradient backdrop */}
       <div className="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(50%_50%_at_50%_0%,rgba(51,86,109,0.45),transparent_70%)]" />
 
-      <div className="container-page relative z-10 py-24 md:py-32">
+      <div className="container-page relative z-10 pb-24 pt-32 md:pb-32 md:pt-44">
         <Reveal>
           <p className="eyebrow mb-4 flex items-center gap-3 text-mint">
             <span className="h-px w-8 bg-mint" />
-            04 / Quiénes somos
+            Quiénes somos
           </p>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2
+          <h1
             id="equipo-heading"
             className="max-w-3xl font-serif text-display-lg font-medium text-balance"
           >
             Diez años no se{" "}
             <span className="italic text-mint">improvisan.</span>
-          </h2>
+          </h1>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mt-5 max-w-2xl text-pretty text-porcelain/70">
-            Conoce a los socios que estarán al otro lado del teléfono cuando
-            todo importa.
+            Conoce al equipo que estará al otro lado del teléfono cuando todo
+            importa.
           </p>
         </Reveal>
 
@@ -67,7 +82,7 @@ export function Team() {
           className="mt-16 grid gap-8 md:grid-cols-2 md:gap-10"
         >
           {team.map((m) => (
-            <TeamCard key={m.name} {...m} />
+            <TeamCard key={m.name ?? m.role} {...m} />
           ))}
         </StaggerGroup>
 
@@ -76,10 +91,10 @@ export function Team() {
           <figure className="mx-auto mt-24 max-w-3xl border-t border-mint/15 pt-12 text-center">
             <blockquote className="font-serif text-display-md italic leading-tight text-porcelain text-balance">
               “Creemos que el derecho laboral debería sentirse menos como un
-              trámite y más como tener a alguien firme en tu esquina.”
+              trámite y más como tener a alguien firme en tu esquina”.
             </blockquote>
             <figcaption className="mt-6 font-mono text-eyebrow uppercase tracking-widest text-mint">
-              — Rivas & Yuraszeck · Socios
+              — RY Legal · Socios
             </figcaption>
           </figure>
         </Reveal>
@@ -88,28 +103,14 @@ export function Team() {
   );
 }
 
-function TeamCard({
-  name,
-  role,
-  education,
-  specialty,
-  bio,
-  image,
-  linkedin,
-}: {
-  name: string;
-  role: string;
-  education: string;
-  specialty: string;
-  bio: string;
-  image: string;
-  linkedin: string;
-}) {
-  const initials = name
+function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Member) {
+  const initials = (name ?? role)
     .split(" ")
     .map((p) => p[0])
     .join("")
     .slice(0, 2);
+
+  const title = name ?? role;
 
   return (
     <motion.article
@@ -131,52 +132,62 @@ function TeamCard({
         </div>
         <Image
           src={image}
-          alt={`${name} — ${role} de Rivas & Yuraszeck`}
+          alt={`${title} — ${role} de RY Legal`}
           fill
           sizes="(min-width: 768px) 50vw, 100vw"
           className="object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-cape via-cape/40 to-transparent opacity-90" />
 
-        <a
-          href={linkedin}
-          aria-label={`LinkedIn de ${name}`}
-          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-pill border border-mint/30 bg-cape/40 text-mint backdrop-blur transition-all duration-300 hover:bg-mint hover:text-cape"
-        >
-          <Linkedin className="h-4 w-4" />
-        </a>
+        {linkedin && (
+          <a
+            href={linkedin}
+            aria-label={`LinkedIn de ${title}`}
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-pill border border-mint/30 bg-cape/40 text-mint backdrop-blur transition-all duration-300 hover:bg-mint hover:text-cape"
+          >
+            <Linkedin className="h-4 w-4" />
+          </a>
+        )}
 
-        {/* Role badge */}
-        <span className="absolute bottom-4 left-5 inline-flex items-center gap-2 rounded-pill border border-mint/25 bg-cape/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-mint backdrop-blur">
-          {role}
-        </span>
+        {/* Role badge — only when there's a distinct name above */}
+        {name && (
+          <span className="absolute bottom-4 left-5 inline-flex items-center gap-2 rounded-pill border border-mint/25 bg-cape/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-mint backdrop-blur">
+            {role}
+          </span>
+        )}
       </div>
 
       {/* Body */}
       <div className="flex flex-1 flex-col gap-4 p-6 md:p-8">
         <div>
           <h3 className="font-serif text-2xl font-medium leading-tight text-porcelain md:text-3xl">
-            {name}
+            {title}
           </h3>
-          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-mint/70">
-            {education}
+          {education && (
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-mint/70">
+              {education}
+            </p>
+          )}
+        </div>
+
+        {specialty && (
+          <div className="flex flex-wrap items-center gap-2">
+            {specialty.split(" · ").map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-pill border border-mint/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-porcelain/70"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {bio && (
+          <p className="text-pretty text-sm leading-relaxed text-porcelain/70 md:text-[15px]">
+            {bio}
           </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2">
-          {specialty.split(" · ").map((tag) => (
-            <span
-              key={tag}
-              className="inline-flex items-center rounded-pill border border-mint/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-porcelain/70"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <p className="text-pretty text-sm leading-relaxed text-porcelain/70 md:text-[15px]">
-          {bio}
-        </p>
+        )}
       </div>
     </motion.article>
   );

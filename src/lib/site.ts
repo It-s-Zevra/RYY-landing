@@ -1,14 +1,14 @@
 export const site = {
-  name: "RYY Abogados",
+  name: "RY Legal",
   legalName: "Rivas & Yuraszeck Abogados",
-  shortName: "RYY",
+  shortName: "RY Legal",
   alternateNames: [
-    "Rivas Legal",
+    "Rivas & Yuraszeck Abogados",
     "Rivas Yuraszeck",
-    "RYY",
-    "RYY Abogados Chile",
+    "RYY Abogados",
+    "RY Legal Chile",
   ],
-  url: "https://ryyabogados.cl",
+  url: "https://rylegal.cl",
   locale: "es-CL",
   language: "es",
   country: "CL",
@@ -48,7 +48,8 @@ export const site = {
     "asesoría sindical",
     "investigaciones internas",
     "RRHH legal",
-    "Rivas Legal",
+    "RY Legal",
+    "RY Legal Chile",
     "Rivas y Yuraszeck",
     "RYY Abogados",
     "César Rivas Calderón",
@@ -69,7 +70,7 @@ export const site = {
     "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1779852990/ChatGPT_Image_26_may_2026_23_35_59_1_m5imjb.png",
   // Social share card (Open Graph / Twitter) shown when the link is shared
   ogImage:
-    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780608293/ChatGPT_Image_4_jun_2026_17_24_20_1_qdvhhc.png",
+    "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780854681/ChatGPT_Image_7_jun_2026_13_50_51_1_tvctgp.png",
   // Logos of companies that have trusted the firm — rendered in a marquee
   clients: [
     "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606917/icon12_oqqfpz.png",
@@ -89,10 +90,10 @@ export const site = {
     bg: "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1778593188/ChatGPT_Image_12_may_2026_09_38_07_jl6kwf.png",
   },
   contact: {
-    phone: "+56 9 7766 0481",
-    phoneIntl: "+56977660481",
-    whatsapp: "https://wa.me/56977660481",
-    email: "contacto@ryyabogados.cl",
+    phone: "+56 9 6684 4283",
+    phoneIntl: "+56966844283",
+    whatsapp: "https://wa.me/56966844283",
+    email: "info@rylegal.cl",
     booking:
       "https://outlook.office.com/bookwithme/user/20a81cc407664665855b1eb45f2a7482@rivaslegal.cl/meetingtype/vXHphFMulUKfxHQKGezNLw2?anonymous&ismsaljsauthenabled&ep=mlink",
     address: "Santiago de Chile",
@@ -102,11 +103,11 @@ export const site = {
     linkedin: "https://www.linkedin.com/company/ryy-abogados",
   },
   nav: [
-    { label: "Equipo", href: "#equipo" },
-    { label: "Servicios", href: "#servicios" },
-    { label: "Proceso", href: "#proceso" },
-    { label: "Insights", href: "#insights" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Servicios", href: "/#servicios" },
+    { label: "Nosotros", href: "/sobre-nosotros" },
+    { label: "Proceso", href: "/#proceso" },
+    { label: "Insights", href: "/#insights" },
+    { label: "Contacto", href: "/#contacto" },
   ],
   consultTypes: [
     "Asesoría Laboral",

@@ -38,7 +38,7 @@ export function Process() {
         <Reveal>
           <p className="eyebrow mb-4 flex items-center gap-3 text-cape">
             <span className="h-px w-8 bg-cape" />
-            05 / Cómo trabajamos
+            04 / Cómo trabajamos
           </p>
         </Reveal>
         <Reveal delay={0.05}>

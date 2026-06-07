@@ -35,7 +35,7 @@ export function Contact() {
           <Reveal>
             <p className="eyebrow mb-4 flex items-center gap-3 text-mint">
               <span className="h-px w-8 bg-mint" />
-              07 / Hablemos
+              06 / Hablemos
             </p>
           </Reveal>
           <Reveal delay={0.05}>
@@ -72,7 +72,7 @@ export function Contact() {
               <ContactItem
                 icon={<Linkedin className="h-4 w-4" />}
                 label="LinkedIn"
-                value="@RYYabogados"
+                value="RY Legal"
                 href={site.contact.linkedin}
                 external
               />
@@ -151,7 +151,7 @@ export function Contact() {
                 </div>
                 <iframe
                   src={site.contact.booking}
-                  title="Agenda una reunión de 30 minutos con RYY Abogados"
+                  title="Agenda una reunión de 30 minutos con RY Legal"
                   loading="lazy"
                   className="h-[640px] w-full bg-white md:h-[720px]"
                 />
