@@ -1,9 +1,4 @@
-"use client";
-
-import { useState } from "react";
 import {
-  Calendar,
-  MessageSquare,
   Mail,
   Phone,
   MapPin,
@@ -12,14 +7,9 @@ import {
 } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Reveal } from "@/components/ui/Reveal";
-import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 
-type Tab = "form" | "calendar";
-
 export function Contact() {
-  const [tab, setTab] = useState<Tab>("form");
-
   return (
     <section
       id="contacto"
@@ -87,76 +77,29 @@ export function Contact() {
           </Reveal>
         </div>
 
-        {/* Right column — form + direct calendar */}
+        {/* Right column — form + direct booking link */}
         <div className="md:col-span-7">
           <Reveal delay={0.05}>
-            <div
-              role="tablist"
-              aria-label="Forma de contacto"
-              className="flex w-full gap-2 rounded-pill border border-mint/15 bg-cape-900/60 p-1.5 backdrop-blur md:w-fit"
-            >
-              <button
-                type="button"
-                role="tab"
-                aria-selected={tab === "form"}
-                onClick={() => setTab("form")}
-                className={cn(
-                  "relative inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-pill px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors md:flex-none md:px-5 md:py-2.5 md:tracking-widest",
-                  tab === "form"
-                    ? "bg-mint text-cape"
-                    : "text-mint/60 hover:text-mint",
-                )}
+            <div className="flex flex-col gap-3 rounded-pill border border-mint/15 bg-cape-900/60 px-5 py-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-mint/60">
+                Escríbenos · Respondemos en menos de 24 h hábiles
+              </p>
+              <a
+                href={site.contact.booking}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 whitespace-nowrap font-mono text-[10px] uppercase tracking-widest text-mint transition-colors hover:text-porcelain"
               >
-                <MessageSquare className="hidden h-3.5 w-3.5 md:inline-flex" />
-                Escríbenos
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={tab === "calendar"}
-                onClick={() => setTab("calendar")}
-                className={cn(
-                  "relative inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-pill px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors md:flex-none md:px-5 md:py-2.5 md:tracking-widest",
-                  tab === "calendar"
-                    ? "bg-mint text-cape"
-                    : "text-mint/60 hover:text-mint",
-                )}
-              >
-                <Calendar className="hidden h-3.5 w-3.5 md:inline-flex" />
-                Agenda directa · 30 min
-              </button>
+                ¿Prefieres agendar directo? · 30 min
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            {tab === "form" ? (
-              <div className="mt-8 rounded-lg border border-mint/10 bg-cape-900/50 p-6 backdrop-blur md:p-8">
-                <ContactForm />
-              </div>
-            ) : (
-              <div className="mt-8 overflow-hidden rounded-lg border border-mint/10 bg-cape-900/50 backdrop-blur">
-                <div className="flex flex-col gap-2 border-b border-mint/10 px-6 py-4 sm:flex-row sm:items-center sm:justify-between md:px-8">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-mint/60">
-                    Reunión de diagnóstico · 30 min · Sin costo
-                  </p>
-                  <a
-                    href={site.contact.booking}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-mint transition-colors hover:text-porcelain"
-                  >
-                    Abrir en pestaña nueva
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-                <iframe
-                  src={site.contact.booking}
-                  title="Agenda una reunión de 30 minutos con RY Legal"
-                  loading="lazy"
-                  className="h-[640px] w-full bg-white md:h-[720px]"
-                />
-              </div>
-            )}
+            <div className="mt-8 rounded-lg border border-mint/10 bg-cape-900/50 p-6 backdrop-blur md:p-8">
+              <ContactForm />
+            </div>
           </Reveal>
         </div>
       </div>

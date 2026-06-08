@@ -25,13 +25,15 @@ export function Footer() {
               Estudio jurídico chileno especializado en derecho laboral,
               compliance y asesoría empresarial.
             </p>
-            <Link
-              href="/#contacto"
+            <a
+              href={site.contact.booking}
+              target="_blank"
+              rel="noreferrer"
               className="mt-6 inline-flex items-center gap-2 rounded-pill border border-mint/30 px-5 py-2.5 font-mono text-eyebrow uppercase tracking-widest text-mint transition-colors hover:bg-mint hover:text-cape"
             >
               Agenda una reunión
               <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+            </a>
           </div>
 
           {/* Sitemap */}

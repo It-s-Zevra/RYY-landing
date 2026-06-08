@@ -159,7 +159,9 @@ export function Hero() {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5">
             {/* Primary — prominent pill with shimmer */}
             <a
-              href="#contacto"
+              href={site.contact.booking}
+              target="_blank"
+              rel="noreferrer"
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-pill bg-mint px-6 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-cape shadow-[0_8px_28px_-8px_rgba(218,246,239,0.4)] transition-all duration-300 ease-out-expo hover:shadow-[0_12px_36px_-8px_rgba(218,246,239,0.7),0_0_0_1px_rgba(218,246,239,0.18)]"
             >
               <span
