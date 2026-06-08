@@ -80,9 +80,9 @@ export function Contact() {
         {/* Right column — form + direct booking link */}
         <div className="md:col-span-7">
           <Reveal delay={0.05}>
-            <div className="flex flex-col gap-3 rounded-pill border border-mint/15 bg-cape-900/60 px-5 py-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 rounded-2xl border border-mint/15 bg-cape-900/60 px-5 py-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
               <p className="font-mono text-[10px] uppercase tracking-widest text-mint/60">
-                Escríbenos · Respondemos en menos de 24 h hábiles
+                Escríbenos · Respuesta en 24 h
               </p>
               <a
                 href={site.contact.booking}
