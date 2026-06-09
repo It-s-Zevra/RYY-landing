@@ -62,7 +62,7 @@ export function Manifesto() {
           {/* Right column — narrative + pillars */}
           <div className="md:col-span-7 lg:col-span-7 lg:col-start-6">
             <Reveal delay={0.1}>
-              <p className="eyebrow mb-4 text-mint-dark">
+              <p className="eyebrow mb-4 text-obsidian">
                 → Nuestra forma de trabajar
               </p>
             </Reveal>
@@ -98,7 +98,7 @@ export function Manifesto() {
                   transition={{ duration: 0.7, ease: EASE, delay: 0.08 * i }}
                   className="flex min-w-0 flex-col gap-3 bg-porcelain p-6 md:p-7"
                 >
-                  <span className="font-mono text-eyebrow uppercase tracking-widest text-mint-dark">
+                  <span className="font-mono text-eyebrow uppercase tracking-widest text-obsidian">
                     0{i + 1} · {p.label}
                   </span>
                   <span className="font-serif text-lg font-medium leading-snug text-cape [overflow-wrap:anywhere] md:text-xl">
@@ -107,15 +107,6 @@ export function Manifesto() {
                 </motion.li>
               ))}
             </ul>
-
-            {/* Closing line */}
-            <Reveal delay={0.15}>
-              <p className="mt-12 max-w-2xl border-l-2 border-mint-dark/60 pl-5 font-serif text-xl italic leading-snug text-cape md:text-2xl">
-                La confianza no se declara, se construye. Y la construimos
-                estando disponibles, siendo directos y ejecutando con la
-                diligencia que cada situación merece.
-              </p>
-            </Reveal>
           </div>
         </div>
       </div>

@@ -13,6 +13,8 @@ type Member = {
   bio?: string;
   image: string;
   linkedin?: string;
+  /** Optional zoom applied to the photo so all heads read at the same scale. */
+  zoom?: string;
 };
 
 const team: Member[] = [
@@ -20,24 +22,29 @@ const team: Member[] = [
     name: "César Rivas Calderón",
     role: "Socio Fundador",
     education: "Universidad de Chile · UAB España · UDD",
-    specialty: "Litigación de alta complejidad · Salud ocupacional",
-    bio: "Abogado de la Universidad de Chile titulado con distinción máxima, Máster en Derecho de los Negocios (UAB, España) y Diplomado en Compliance y Gobiernos Corporativos (UDD). Especialista en litigación de alta complejidad y asesoría 360°, con trayectoria previa como Asociado Senior en GNP Canales y abogado en la Fiscalía de la Asociación Chilena de Seguridad ACHS. Actualmente lidera la firma y es docente en la Universidad de Santiago de Chile, combinando la excelencia académica con la gestión estratégica del riesgo laboral, especialista en materias de salud ocupacional, accidentes del trabajo y enfermedades profesionales.",
+    specialty: "Litigación de alta complejidad · Salud ocupacional · Compliance",
+    bio: "Abogado de la Universidad de Chile titulado con distinción máxima, Máster en Derecho de los Negocios (UAB, España) y Diplomado en Compliance y Gobiernos Corporativos (UDD). Especialista en litigación de alta complejidad y asesoría 360°, con trayectoria como Asociado Senior en GNP Canales y abogado en la Fiscalía de la Asociación Chilena de Seguridad ACHS. Actualmente lidera la firma y es docente en la Universidad de Santiago de Chile, combinando la excelencia académica con la gestión estratégica del riesgo laboral, especialista en materias de salud ocupacional y compliance.",
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606912/CesarCorpo-5_upgu1c.jpg",
     linkedin: "https://www.linkedin.com/in/carivasca/",
+    zoom: "scale-[1.16]",
   },
   {
     name: "Josefa Yuraszeck Bravo",
     role: "Socia Fundadora",
     education: "Universidad de los Andes · Magíster UAI",
-    specialty: "Consultoría corporativa · Relaciones sindicales",
-    bio: "Abogada de la Universidad de los Andes y Magíster en Derecho Laboral y Seguridad Social (UAI). Especialista en consultoría corporativa, investigaciones críticas y relaciones sindicales. Cuenta con amplia experiencia asesorando a grandes empresas como Cencosud, SMU y Gasco en firmas de élite como GNP Canales y Rodríguez Coronel. En Rivas & Yuraszeck, lidera el área de litigios enfocándose en la estabilidad y continuidad del negocio, otorgando un servicio de representación del más alto nivel.",
+    specialty: "Consultoría corporativa · Relaciones Laborales · Ley Karin",
+    bio: "Abogada de la Universidad de los Andes y Magíster en Derecho Laboral y Seguridad Social (UAI). Con trayectoria en firmas de élite como GNP Canales y Rodríguez Coronel, donde asesoró a grandes empresas en litigación compleja, consultoría corporativa, investigaciones críticas y relaciones sindicales. En Rivas Yuraszeck lidera el área de litigios, donde a través de su formación especializada en litigación laboral, se enfoca en proteger la estabilidad y continuidad del negocio. Además se especializa en investigaciones de Ley Karin y cuenta con certificación en perspectiva de género, abordando cada caso con el estándar técnico exigido.",
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606911/CesarCorpo-6_qrjpbb.jpg",
     linkedin: "https://www.linkedin.com/in/josefa-yuraszeck-758900127/",
   },
   {
+    name: "Alanys Barrera Saavedra",
     role: "Procuradora",
+    education: "Universidad de Santiago de Chile",
+    specialty: "Tramitación Judicial",
+    bio: "Estudiante de quinto año de Derecho de la Universidad de Santiago de Chile. Integra el equipo jurídico de RY Legal, participando en la elaboración de escritos, investigación jurídica y tramitación de causas laborales. Su formación se ha orientado especialmente al Derecho del Trabajo, con interés en las relaciones laborales y la protección de derechos fundamentales.",
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780855143/CesarCorpo-3_1_ugmdcp.jpg",
   },
@@ -103,7 +110,7 @@ export function AboutTeam() {
   );
 }
 
-function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Member) {
+function TeamCard({ name, role, education, specialty, bio, image, linkedin, zoom }: Member) {
   const initials = (name ?? role)
     .split(" ")
     .map((p) => p[0])
@@ -122,7 +129,7 @@ function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Me
       className="group relative flex flex-col overflow-hidden rounded-lg border border-mint/10 bg-cape-700/40 backdrop-blur-sm transition-colors duration-500 hover:border-mint/25"
     >
       {/* Photo */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-mint/10 bg-cape-700 sm:aspect-[5/6]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-mint/10 bg-cape-700">
         {/* Fallback shown beneath the photo */}
         <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_30%,rgba(78,111,134,0.6),rgba(10,37,54,1))]" />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -130,13 +137,17 @@ function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Me
             {initials}
           </span>
         </div>
-        <Image
-          src={image}
-          alt={`${title} — ${role} de RY Legal`}
-          fill
-          sizes="(min-width: 768px) 50vw, 100vw"
-          className="object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
-        />
+        {/* Wrapper carries the per-member base zoom so heads read at the same
+            scale; the hover zoom lives on the image and composes on top. */}
+        <div className={`absolute inset-0 ${zoom ?? ""}`}>
+          <Image
+            src={image}
+            alt={`${title} — ${role} de RY Legal`}
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-cape via-cape/40 to-transparent opacity-90" />
 
         {linkedin && (
@@ -184,7 +195,7 @@ function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Me
         )}
 
         {bio && (
-          <p className="text-pretty text-sm leading-relaxed text-porcelain/70 md:text-[15px]">
+          <p className="text-pretty text-justify text-sm leading-relaxed text-porcelain/70 md:text-[15px]">
             {bio}
           </p>
         )}

@@ -48,11 +48,20 @@ const team = [
     name: "Josefa Yuraszeck Bravo",
     role: "Socia Fundadora",
     description:
-      "Abogada de la Universidad de los Andes y Magíster en Derecho Laboral y Seguridad Social (UAI). Especialista en consultoría corporativa, investigaciones críticas y relaciones sindicales.",
+      "Abogada de la Universidad de los Andes y Magíster en Derecho Laboral y Seguridad Social (UAI). Especialista en consultoría corporativa, relaciones laborales e investigaciones de Ley Karin.",
     alma: ["Universidad de los Andes", "Universidad Adolfo Ibáñez"],
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606911/CesarCorpo-6_qrjpbb.jpg",
     linkedin: "https://www.linkedin.com/in/josefa-yuraszeck-758900127/",
+  },
+  {
+    name: "Alanys Barrera Saavedra",
+    role: "Procuradora",
+    description:
+      "Estudiante de quinto año de Derecho de la Universidad de Santiago de Chile. Integra el equipo jurídico de RY Legal en la elaboración de escritos, investigación jurídica y tramitación de causas laborales, con foco en Derecho del Trabajo y derechos fundamentales.",
+    alma: ["Universidad de Santiago de Chile"],
+    image:
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780855143/CesarCorpo-3_1_ugmdcp.jpg",
   },
 ];
 
@@ -226,8 +235,7 @@ export function JsonLd() {
       jobTitle: m.role,
       description: m.description,
       image: m.image,
-      url: m.linkedin,
-      sameAs: [m.linkedin],
+      ...(m.linkedin ? { url: m.linkedin, sameAs: [m.linkedin] } : {}),
       worksFor: { "@id": organizationId },
       alumniOf: m.alma.map((a) => ({
         "@type": "EducationalOrganization",

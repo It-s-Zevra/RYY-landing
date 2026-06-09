@@ -110,7 +110,7 @@ export function Footer() {
           <p>© 2026 {site.name}. Todos los derechos reservados.</p>
           <div className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-5">
             <p className="font-mono uppercase tracking-widest text-porcelain/40">
-              {site.legalName}
+              {site.name}
             </p>
             <span aria-hidden className="hidden h-3 w-px bg-mint/15 md:block" />
             <a
