@@ -56,7 +56,7 @@ const team: Member[] = [
     bio: "Estudiante de quinto año de Derecho de la Universidad de Santiago de Chile. Integra el equipo jurídico de RY Legal, participando en la elaboración de escritos, investigación jurídica y tramitación de causas laborales. Su formación se ha orientado especialmente al Derecho del Trabajo, con interés en las relaciones laborales y la protección de derechos fundamentales.",
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780855143/CesarCorpo-3_1_ugmdcp.jpg",
-    crop: "c_thumb,g_face,ar_4:5,z_0.56,y_50,w_900",
+    crop: "c_thumb,g_face,ar_4:5,z_0.44,y_110,w_900",
   },
 ];
 
