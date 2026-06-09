@@ -13,14 +13,17 @@ type Member = {
   bio?: string;
   image: string;
   linkedin?: string;
+  /**
+   * Cloudinary crop tuned per photo so every head reads at the same scale and
+   * vertical position. The source photos differ in orientation (César's is
+   * portrait, the others landscape) and the auto face box varies, so the zoom
+   * (z) and vertical nudge (y) are dialed in per person to line up eyes/heads.
+   */
+  crop: string;
 };
 
-// Cloudinary transform: face-detected crop normalized to 4:5 so every head
-// reads at the same scale and vertical position, regardless of the source
-// photo's orientation.
-const FACE_CROP = "c_thumb,g_face,ar_4:5,z_0.62,w_800";
-const faceCrop = (url: string) =>
-  url.replace("/image/upload/", `/image/upload/${FACE_CROP}/`);
+const faceCrop = (url: string, crop: string) =>
+  url.replace("/image/upload/", `/image/upload/${crop}/`);
 
 const team: Member[] = [
   {
@@ -32,6 +35,7 @@ const team: Member[] = [
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606912/CesarCorpo-5_upgu1c.jpg",
     linkedin: "https://www.linkedin.com/in/carivasca/",
+    crop: "c_thumb,g_face,ar_4:5,z_0.8,y_-150,w_900",
   },
   {
     name: "Josefa Yuraszeck Bravo",
@@ -42,6 +46,7 @@ const team: Member[] = [
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606911/CesarCorpo-6_qrjpbb.jpg",
     linkedin: "https://www.linkedin.com/in/josefa-yuraszeck-758900127/",
+    crop: "c_thumb,g_face,ar_4:5,z_0.62,w_900",
   },
   {
     name: "Alanys Barrera Saavedra",
@@ -51,6 +56,7 @@ const team: Member[] = [
     bio: "Estudiante de quinto año de Derecho de la Universidad de Santiago de Chile. Integra el equipo jurídico de RY Legal, participando en la elaboración de escritos, investigación jurídica y tramitación de causas laborales. Su formación se ha orientado especialmente al Derecho del Trabajo, con interés en las relaciones laborales y la protección de derechos fundamentales.",
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780855143/CesarCorpo-3_1_ugmdcp.jpg",
+    crop: "c_thumb,g_face,ar_4:5,z_0.56,y_50,w_900",
   },
 ];
 
@@ -114,7 +120,7 @@ export function AboutTeam() {
   );
 }
 
-function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Member) {
+function TeamCard({ name, role, education, specialty, bio, image, linkedin, crop }: Member) {
   const initials = (name ?? role)
     .split(" ")
     .map((p) => p[0])
@@ -142,7 +148,7 @@ function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Me
           </span>
         </div>
         <Image
-          src={faceCrop(image)}
+          src={faceCrop(image, crop)}
           alt={`${title} — ${role} de RY Legal`}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
