@@ -13,9 +13,14 @@ type Member = {
   bio?: string;
   image: string;
   linkedin?: string;
-  /** Optional zoom applied to the photo so all heads read at the same scale. */
-  zoom?: string;
 };
+
+// Cloudinary transform: face-detected crop normalized to 4:5 so every head
+// reads at the same scale and vertical position, regardless of the source
+// photo's orientation.
+const FACE_CROP = "c_thumb,g_face,ar_4:5,z_0.62,w_800";
+const faceCrop = (url: string) =>
+  url.replace("/image/upload/", `/image/upload/${FACE_CROP}/`);
 
 const team: Member[] = [
   {
@@ -27,7 +32,6 @@ const team: Member[] = [
     image:
       "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606912/CesarCorpo-5_upgu1c.jpg",
     linkedin: "https://www.linkedin.com/in/carivasca/",
-    zoom: "scale-[1.16]",
   },
   {
     name: "Josefa Yuraszeck Bravo",
@@ -86,7 +90,7 @@ export function AboutTeam() {
 
         <StaggerGroup
           stagger={0.12}
-          className="mt-16 grid gap-8 md:grid-cols-2 md:gap-10"
+          className="mt-16 grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8"
         >
           {team.map((m) => (
             <TeamCard key={m.name ?? m.role} {...m} />
@@ -110,7 +114,7 @@ export function AboutTeam() {
   );
 }
 
-function TeamCard({ name, role, education, specialty, bio, image, linkedin, zoom }: Member) {
+function TeamCard({ name, role, education, specialty, bio, image, linkedin }: Member) {
   const initials = (name ?? role)
     .split(" ")
     .map((p) => p[0])
@@ -137,17 +141,13 @@ function TeamCard({ name, role, education, specialty, bio, image, linkedin, zoom
             {initials}
           </span>
         </div>
-        {/* Wrapper carries the per-member base zoom so heads read at the same
-            scale; the hover zoom lives on the image and composes on top. */}
-        <div className={`absolute inset-0 ${zoom ?? ""}`}>
-          <Image
-            src={image}
-            alt={`${title} — ${role} de RY Legal`}
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover object-top transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
-          />
-        </div>
+        <Image
+          src={faceCrop(image)}
+          alt={`${title} — ${role} de RY Legal`}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 33vw, 100vw"
+          className="object-cover object-center transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-cape via-cape/40 to-transparent opacity-90" />
 
         {linkedin && (
