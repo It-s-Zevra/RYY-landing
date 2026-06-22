@@ -63,7 +63,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#insights" className="link-underline">
+                <Link href="/blog" className="link-underline">
                   Insights
                 </Link>
               </li>

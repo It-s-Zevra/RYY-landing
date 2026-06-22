@@ -7,8 +7,13 @@ import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
 import { Insights } from "@/components/sections/Insights";
 import { Contact } from "@/components/sections/Contact";
+import { getLatestPosts } from "@/lib/blog";
 
-export default function HomePage() {
+export const revalidate = 300;
+
+export default async function HomePage() {
+  const posts = await getLatestPosts(3);
+
   return (
     <>
       <Navbar />
@@ -18,7 +23,7 @@ export default function HomePage() {
         <Manifesto />
         <Services />
         <Process />
-        <Insights />
+        <Insights posts={posts} />
         <Contact />
       </main>
       <Footer />
