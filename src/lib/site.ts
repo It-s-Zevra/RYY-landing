@@ -106,7 +106,7 @@ export const site = {
     { label: "Servicios", href: "/#servicios" },
     { label: "Nosotros", href: "/sobre-nosotros" },
     { label: "Proceso", href: "/#proceso" },
-    { label: "Insights", href: "/blog" },
+    { label: "Blog", href: "/blog" },
     { label: "Contacto", href: "/#contacto" },
   ],
   consultTypes: [
