@@ -32,7 +32,9 @@ export function Reveal({ children, delay = 0, className, as = "div" }: Props) {
       variants={variants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      // Pre-dispara ~120px antes de entrar por abajo: con scroll de inercia
+      // (Lenis) evita que la animación se vea "flashear" sobre algo ya visible.
+      viewport={{ once: true, margin: "0px 0px 120px 0px" }}
       transition={{ duration: 0.85, ease: EASE, delay }}
     >
       {children}
@@ -57,7 +59,7 @@ export function StaggerGroup({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "0px 0px 120px 0px" }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: stagger } },
@@ -89,7 +91,7 @@ export function MaskReveal({
     : {
         initial: { y: "110%" },
         whileInView: { y: "0%" },
-        viewport: { once: true, margin: "-40px" },
+        viewport: { once: true, margin: "0px 0px 100px 0px" },
       };
 
   return (

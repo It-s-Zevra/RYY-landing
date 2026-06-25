@@ -28,7 +28,7 @@ export function Hero() {
       id="inicio"
       aria-labelledby="hero-heading"
       data-section-theme="dark"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-cape text-porcelain"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-cape text-porcelain"
     >
       {/* Background image with parallax */}
       <motion.div
@@ -72,9 +72,11 @@ export function Hero() {
       </p>
 
       {/* Content */}
+      {/* my-auto centra el contenido cuando hay espacio, pero lo ancla bajo el
+          navbar en viewports bajos (evita que el eyebrow choque con el logo) */}
       <motion.div
         style={{ opacity: fade }}
-        className="container-page relative z-10 pb-28 pt-20 md:pb-40 md:pt-20"
+        className="container-page relative z-10 my-auto w-full pb-28 pt-28 md:pb-40 md:pt-36"
       >
         {/* Eyebrow */}
         <motion.p

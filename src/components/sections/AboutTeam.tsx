@@ -33,11 +33,11 @@ const team: Member[] = [
     specialty: "Litigación de alta complejidad · Salud ocupacional · Compliance",
     bio: "Abogado de la Universidad de Chile titulado con distinción máxima, Máster en Derecho de los Negocios (UAB, España) y Diplomado en Compliance y Gobiernos Corporativos (UDD). Especialista en litigación de alta complejidad y asesoría 360°, con trayectoria como Asociado Senior en GNP Canales y abogado en la Fiscalía de la Asociación Chilena de Seguridad ACHS. Actualmente lidera la firma y es docente en la Universidad de Santiago de Chile, combinando la excelencia académica con la gestión estratégica del riesgo laboral, especialista en materias de salud ocupacional y compliance.",
     image:
-      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1780606912/CesarCorpo-5_upgu1c.jpg",
+      "https://res.cloudinary.com/dg1x0cwdc/image/upload/v1782312038/CesarCorpo-4_zhqkyi.jpg",
     linkedin: "https://www.linkedin.com/in/carivasca/",
-    // Recorte fijo (no g_face): la foto es vertical 2000×3000 y el zoom con
-    // g_face dejaba la cabeza pegada abajo. Alineado a la línea de ojos de Josefa.
-    crop: "c_crop,w_1125,h_1406,x_405,y_345/w_900",
+    // Recorte fijo (no g_face): foto horizontal 3000×2250. Alineado a la línea
+    // de ojos de Josefa (referencia), centrado en el rostro.
+    crop: "c_crop,w_1400,h_1750,x_775,y_0/w_900",
   },
   {
     name: "Josefa Yuraszeck Bravo",
